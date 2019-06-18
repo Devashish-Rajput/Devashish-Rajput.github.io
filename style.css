@@ -108,5 +108,21 @@ text-align: center;
         padding-left: 3rem;
     }
 }
+@media(max-width: 650px){
+    .header-content h1{
+        display: none;
+    } 
 
+}
+@media(max-width: 487px){
+    .header-content {
+        display: none;
+    } 
+
+}
+
+@media(max-width: 565px){
+    .v-header{
+        height:80vh; 
+}
 
