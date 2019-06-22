@@ -1,67 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="flexboxgrid.css">
-    <title>Solar Arise</title>
-</head>
-<body>
-    <header class="v-header container" style="height: 25vh">
-        <div class="fullscreen-video-wrap">
-        <header id="main-header" >
-                <div class="container">
-                    <div class="row end-sm end-md end-lg center-xs middle-xs middle-sm middle-md middle-lg">
-                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-                        <h1 style="color:#333; margin-left:0;"><IMG SRC="logo.png" WIDTH=250 HEIGHT=40></h1>
-                    </div>
-                    <div class="col-xs-12 col-sm-10 col-md-10 col-lg-10">
-                        <nav id="navbar">
-                        <ul>
-                            <li class="current"><a href="index.html">Home</a></li>
-                            <li><a href="project.html">Projects</a></li>
-                            <li><a href="meetus.html">Meet us</a></li>
-                            <li><a href="contact.html">Contact us</a></li>
-                        </ul>
-                        </nav>
-                    </div>
-                    </div>
-                </div>
-        </header>
-        
-        </div>
-        </div>
-        <div class="header-overlay"></div>
-        <div class="header-content">
-        </div>
-    </header>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>Contact</title>
 
-    <Section class="section section-a">
-            <div class="container" id="call">
-                <h1>Visit us, call us, email us</h1>
-            </div>
-        </Section>
-        <Section class="section section-b">
-                <div class="container">
-                    <h1>Solar Arise</h1>
-                     <p><br>001, Tower C,
-                        <br>Unitech Cyber Park,
-                        <br>Sector 39
-                        <br>Gurgaon, HR
-                        <br>122001
-                        <br>India
-                        <br> 
-                        <br>t: +91-124-420-4108
-                        <br>e: <a href="mailto:info@solar-arise.com" style="color:aqua">info@solar-arise.com</a>
-                        </p>
-                </div>
-            </Section>
-            <Section class="section section-c">
-                    <div class="container" id="call">
-                         <p>Copyright © SolarArise India. All rights reserved.</p>
-                    </div>
-            </Section>
     
+
+    <!-- Font awesome -->
+    <link href="assets/css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.css" rel="stylesheet">   
+    <!-- Slick slider -->
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.css">          
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="assets/css/jquery.fancybox.css" type="text/css" media="screen" /> 
+    <!-- Theme color -->
+    <link id="switcher" href="assets/css/theme-color/default-theme.css" rel="stylesheet">          
+
+    <!-- Main style sheet -->
+    <link href="assets/css/style.css" rel="stylesheet">    
+
+   
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+
+  </head>
+  <body> 
+
+  <!--START SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#">
+      <i class="fa fa-angle-up"></i>      
+    </a>
+  <!-- END SCROLL TOP BUTTON -->
+
+  <!-- Start header  -->
+  <header id="mu-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div class="mu-header-area">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="mu-header-top-left">
+                  <div class="mu-top-email">
+                    <i class="fa fa-envelope"></i>
+                    <span><a target="blank" href="mailto:info@solar-arise.com">info@solar-arise.com</a></span>
+                  </div>
+                  <div class="mu-top-phone">
+                    <i class="fa fa-phone"></i>
+                    <span>+91-124-420-4108</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="mu-header-top-right">
+                  <nav>
+                    <ul class="mu-top-social-nav">
+                      <li><a target="blank" href="mailto:info@solar-arise.com"><span class="fa fa-envelope"></span></a></li>
+                      <li><a target="blank" href="https://in.linkedin.com/company/solararise-india-projects-pvt-ltd"><span class="fa fa-linkedin"></span></a></li>
+                      <li><a href="#"><span class="fa fa-youtube"></span></a></li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End header  -->
+  <!-- Start menu -->
+  <section id="mu-menu">
+    <nav class="navbar navbar-default" role="navigation">  
+      <div class="container">
+        <div class="navbar-header">
+          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- LOGO -->              
+          <!-- TEXT BASED LOGO -->
+          <a class="navbar-brand" href="index.html"><IMG SRC="logo.png" WIDTH=250 HEIGHT=40></a>
+          <!-- IMG BASED LOGO  -->
+          <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+            <li><a href="index.html">Home</a></li>            
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown">Projects<span class="fa fa-angle-down"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                  <li><a href="project.html">Projects Overview</a></li>
+                  <li><a href="telangana1.html">Telangana I</a></li>
+                  <li><a href="telangana2.html">Telangana II</a></li>
+                  <li><a href="maharashtra1.html">Maharashtra I</a></li>
+                  <li><a href="karnataka1.html">Karnataka I</a></li>
+                  <li><a href="karnataka2.html">Karnataka II</a></li>              
+              </ul>
+            </li>           
+            <li><a href="gallery.html">Gallery</a></li>           
+            <li><a href="about.html">About us</a></li>
+            <li class="active"><a href="contact.html">Contact</a></li>              
+          </ul>                     
+        </div><!--/.nav-collapse -->        
+      </div>     
+    </nav>
+  </section>
+
+  <!-- End menu -->
+  
+ <!-- Page breadcrumb -->
+ <section id="mu-page-breadcrumb">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-page-breadcrumb-area">
+           <h2>Contact</h2>
+           <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>            
+            <li class="active">Contact</li>
+          </ol>
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End breadcrumb -->
+
+ <!-- Start contact  -->
+ <section id="mu-contact">
+   <div class="container">
+     <div class="row">
+       <div class="col-md-12">
+         <div class="mu-contact-area">
+          <!-- start title -->
+          <div class="mu-title">
+            <h2>Get in Touch</h2>
+            <p>Please feel free to contact us regarding any questions or comments about our projects, products and services.</p>
+          </div>
+          <!-- end title -->
+          <!-- start contact content -->
+          <div class="mu-contact-content">           
+            <div class="row">
+              <div class="col-md-6">
+                <div class="mu-contact-right">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14032.899383316455!2d77.0562427!3d28.4426377!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x967a906ab875ae10!2sSolarArise!5e0!3m2!1sen!2sin!4v1561019449521!5m2!1sen!2sin" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="mu-contact-left">
+                      <h1>Contact</h1>
+                      <address>
+                        <p>001, Tower C,
+                          Unitech Cyber Park,
+                          Sector 39<br>
+                          Gurgaon, HR
+                          122001
+                          India</p>
+                        <p>Phone:+91-124-420-4108 </p>
+                        <p>Email:<a target="blank" href="mailto:info@solar-arise.com">info@solar-arise.com</a></p>
+                      </address>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- end contact content -->
+         </div>
+       </div>
+     </div>
+   </div>
+ </section>
+ <!-- End contact  -->
+ 
+
+  <!-- Start footer -->
+  <footer id="mu-footer">
+    <!-- start footer top -->
+    <div class="mu-footer-top">
+      <div class="container">
+        <div class="mu-footer-top-area">
+          <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <div class="mu-footer-widget">
+                <h4>Information</h4>
+                <ul>
+                  <li><a href="about.html">About Us</a></li>
+                  <li><a href="project.html">Projects</a></li>
+                  <li><a href="gallery.html">Gallery</a></li>
+                  <li><a href="">Event</a></li>
+                  <li><a href="">Sitemap</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <div class="mu-footer-widget">
+                <h4>Current Projects</h4>
+                <ul>
+                  <li><a href="telangana1.html">Telangana I</a></li>
+                  <li><a href="telangana2.html">Telangana II</a></li>
+                  <li><a href="maharashtra1.html">Maharashtra I</a></li>
+                  <li><a href="karnataka1.html">Karnataka I</a></li>
+                  <li><a href="karnataka2.html">Karnataka II</a></li>                  
+                </ul>
+              </div>
+            </div>
+      
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <div class="mu-footer-widget">
+                <h4>Contact</h4>
+                <address>
+                  <p>001, Tower C,
+                    Unitech Cyber Park,
+                    Sector 39
+                    Gurgaon, HR
+                    122001
+                    India</p>
+                  <p>Phone:+91-124-420-4108 </p>
+                  <p>Email:info@solar-arise.com</p>
+                </address>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end footer top -->
+    <!-- start footer bottom -->
+    <div class="mu-footer-bottom">
+      <div class="container">
+        <div class="mu-footer-bottom-area">
+          <p>2019&copy;Solar Arise. All Right Reserved.</a></p>
+        </div>
+      </div>
+    </div>
+    <!-- end footer bottom -->
+  </footer>
+  <!-- End footer -->
+
+
+
+
+
+  
+  <!-- jQuery library -->
+  <script src="assets/js/jquery.min.js"></script>  
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="assets/js/bootstrap.js"></script>   
+  <!-- Slick slider -->
+  <script type="text/javascript" src="assets/js/slick.js"></script>
+  <!-- Counter -->
+  <script type="text/javascript" src="assets/js/waypoints.js"></script>
+  <script type="text/javascript" src="assets/js/jquery.counterup.js"></script>  
+  <!-- Mixit slider -->
+  <script type="text/javascript" src="assets/js/jquery.mixitup.js"></script>
+  <!-- Add fancyBox -->        
+  <script type="text/javascript" src="assets/js/jquery.fancybox.pack.js"></script>
+
+  <!-- Custom js -->
+  <script src="assets/js/custom.js"></script> 
+
   </body>
+</html>
