@@ -327,12 +327,19 @@ img {
   display: inline;
   float: left;
   width: 100%;
+  
 }
 #mu-slider .mu-slider-single {
   display: inline;
   float: left;
   width: 100%;
   position: relative;
+  background-image:url('/assets/img/slider/4.jpg');
+  min-height:600px;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-attachment:fixed;
 }
 #mu-slider .mu-slider-single .mu-slider-img {
   display: inline;
@@ -341,7 +348,6 @@ img {
   height: 500px;
 }
 #mu-slider .mu-slider-single .mu-slider-img:after {
-  background-color: rgba(0, 0, 0, 0.2);
   content: '';
   position: absolute;
   left: 0;
@@ -416,7 +422,7 @@ img {
   width: 100%;
 }
 #mu-service .mu-service-area .mu-service-single {
-  background-color: #727466;
+  background-color: #0086b3;
   color: #fff;
   display: inline;
   float: left;
@@ -425,10 +431,10 @@ img {
   width: 33.33%;
 }
 #mu-service .mu-service-area .mu-service-single:nth-child(2) {
-  background-color: #2dac49;
+  background-color: #009900;
 }
 #mu-service .mu-service-area .mu-service-single:nth-child(3) {
-  background-color: #44a4e4;
+  background-color: #e65c00;
 }
 #mu-service .mu-service-area .mu-service-single span {
   font-size: 30px;
@@ -460,7 +466,8 @@ img {
   width: 100%;
 }
 #mu-about-us .mu-about-us-area .mu-about-us-left h2 {
-  font-size: 40px;
+  text-transform: none;
+  font-size: 30px;
   margin-bottom: 20px;
   text-align: left;
 }
@@ -597,7 +604,7 @@ img {
 }
 
 /*==================
- LATEST COURSES SECTION
+ LATEST Projects SECTION
 ====================*/
 #mu-latest-courses {
   background-color: #333;
@@ -613,6 +620,7 @@ img {
 }
 #mu-latest-courses .mu-latest-courses-area .mu-title h2 {
   color: #fff;
+  text-transform: none;
 }
 #mu-latest-courses .mu-latest-courses-area .mu-title p {
   color: #fff;

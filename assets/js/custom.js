@@ -21,19 +21,7 @@
 jQuery(function($){
 
 
-  /* ----------------------------------------------------------- */
-  /*  1. SEARCH FORM
-  /* ----------------------------------------------------------- */
 
-   jQuery('#mu-search-icon').on('click', function(event) {
-        event.preventDefault();
-        $('#mu-search').addClass('mu-search-open');
-        $('#mu-search form input[type="search"]').focus();
-    });
-    
-    jQuery('.mu-search-close').on('click', function(event) {
-      $("#mu-search").removeClass('mu-search-open');
-    });
 
 /* ----------------------------------------------------------- */
 /*  2. ABOUT US VIDEO
@@ -53,19 +41,7 @@ jQuery(function($){
       $(this).remove();
     });
   
-  /* ----------------------------------------------------------- */
-  /*  3. TOP SLIDER (SLICK SLIDER)
-  /* ----------------------------------------------------------- */    
-
-    jQuery('#mu-slider').slick({
-      dots: false,
-      infinite: true,
-      arrows: true,
-      speed: 500,     
-      autoplay: true,      
-      cssEase: 'linear'
-    });
-
+  
   /* ----------------------------------------------------------- */
   /*  4. ABOUT US (SLICK SLIDER)
   /* ----------------------------------------------------------- */      
