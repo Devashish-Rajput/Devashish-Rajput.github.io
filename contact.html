@@ -87,7 +87,7 @@
           </button>
           <!-- LOGO -->              
           <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="index.html"><IMG SRC="logo.png" WIDTH=250 HEIGHT=40></a>
+          <a class="navbar-brand" href="index.html"><IMG SRC="logo.png" WIDTH=200 HEIGHT=40></a>
           <!-- IMG BASED LOGO  -->
           <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
         </div>
@@ -95,7 +95,7 @@
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
             <li><a href="index.html">Home</a></li>            
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown">Projects<span class="fa fa-angle-down"></span></a>
+              <a onClick="location.href='project.html'" href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
                   <li><a href="project.html">Projects Overview</a></li>
                   <li><a href="telangana1.html">Telangana I</a></li>
@@ -104,9 +104,15 @@
                   <li><a href="karnataka1.html">Karnataka I</a></li>
                   <li><a href="karnataka2.html">Karnataka II</a></li>              
               </ul>
-            </li>           
-            <li><a href="gallery.html">Gallery</a></li>           
-            <li><a href="about.html">About us</a></li>
+            </li>                     
+            <li class="dropdown" >
+                <a onClick="location.href='about.html'" href="#" class="dropdown-toggle" data-toggle="dropdown">About us <span class="fa fa-angle-down"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="about.html#mu-our-teacher">Founders</a></li>
+                    <li><a href="about.html#ourteam">Team</a></li>
+                    <li><a href="about.html#investors">Investors</a></li>            
+              </ul>
+              </li>
             <li class="active"><a href="contact.html">Contact</a></li>              
           </ul>                     
         </div><!--/.nav-collapse -->        
@@ -164,8 +170,8 @@
                           Gurgaon, HR
                           122001
                           India</p>
-                        <p>Phone:+91-124-420-4108 </p>
-                        <p>Email:<a target="blank" href="mailto:info@solar-arise.com">info@solar-arise.com</a></p>
+                        <p>Phone: +91-124-420-4108 </p>
+                        <p>Email: <a target="blank" href="mailto:info@solar-arise.com">info@solar-arise.com</a></p>
                       </address>
                     </div>
                   </div>
@@ -195,7 +201,6 @@
                 <ul>
                   <li><a href="about.html">About Us</a></li>
                   <li><a href="project.html">Projects</a></li>
-                  <li><a href="gallery.html">Gallery</a></li>
                   <li><a href="press.html">Press</a></li>
                 </ul>
               </div>
@@ -223,8 +228,8 @@
                     Gurgaon, HR
                     122001
                     India</p>
-                  <p>Phone:+91-124-420-4108 </p>
-                  <p>Email:info@solar-arise.com</p>
+                  <p>Phone: +91-124-420-4108 </p>
+                  <p>Email: info@solar-arise.com</p>
                 </address>
               </div>
             </div>
@@ -259,10 +264,6 @@
   <!-- Counter -->
   <script type="text/javascript" src="assets/js/waypoints.js"></script>
   <script type="text/javascript" src="assets/js/jquery.counterup.js"></script>  
-  <!-- Mixit slider -->
-  <script type="text/javascript" src="assets/js/jquery.mixitup.js"></script>
-  <!-- Add fancyBox -->        
-  <script type="text/javascript" src="assets/js/jquery.fancybox.pack.js"></script>
 
   <!-- Custom js -->
   <script src="assets/js/custom.js"></script> 

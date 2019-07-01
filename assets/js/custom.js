@@ -1,4 +1,10 @@
 /** 
+  * Template Name: Varsity
+  * Version: 1.0  
+  * Template Scripts
+  * Author: MarkUps
+  * Author URI: http://www.markups.io/
+
   Custom JS
   
 
@@ -21,27 +27,20 @@
 jQuery(function($){
 
 
-
-
-/* ----------------------------------------------------------- */
-/*  2. ABOUT US VIDEO
-/* ----------------------------------------------------------- */
-    // WHEN CLICK PLAY BUTTON 
-    jQuery('#mu-abtus-video').on('click', function(event) {
-      event.preventDefault();
-      $('body').append("<div id='about-video-popup'><span id='mu-video-close' class='fa fa-close'></span><iframe id='mutube-video' name='mutube-video' frameborder='0' allowfullscreen></iframe></div>");        
-      $("#mutube-video").attr("src", $(this).attr("href"));
-    });         
-    // WHEN CLICK CLOSE BUTTON
-    $(document).on('click','#mu-video-close', function(event) {     
-      $(this).parent("div").fadeOut(1000);
-    });
-    // WHEN CLICK OVERLAY BACKGROUND
-    $(document).on('click','#about-video-popup', function(event) {
-      $(this).remove();
-    });
   
-  
+  /* ----------------------------------------------------------- */
+  /*  3. TOP SLIDER (SLICK SLIDER)
+  /* ----------------------------------------------------------- */    
+
+    jQuery('#mu-slider').slick({
+      dots: false,
+      infinite: true,
+      arrows: true,
+      speed: 500,     
+      autoplay: true,      
+      cssEase: 'linear'
+    });
+
   /* ----------------------------------------------------------- */
   /*  4. ABOUT US (SLICK SLIDER)
   /* ----------------------------------------------------------- */      
@@ -57,7 +56,7 @@ jQuery(function($){
   
 
   /* ----------------------------------------------------------- */
-  /*  5. LATEST COURSE SLIDER (SLICK SLIDER)
+  /*  5. LATEST Projects SLIDER (SLICK SLIDER)
   /* ----------------------------------------------------------- */    
 
     jQuery('#mu-latest-course-slide').slick({

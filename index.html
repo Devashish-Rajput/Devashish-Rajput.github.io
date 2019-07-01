@@ -87,7 +87,7 @@
           </button>
           <!-- LOGO -->              
           <!-- TEXT BASED LOGO -->
-          <a class="navbar-brand" href="index.html"><IMG SRC="logo.png" WIDTH=250 HEIGHT=40></a>
+          <a class="navbar-brand" href="index.html"><IMG SRC="logo.png" WIDTH=200 HEIGHT=40></a>
           <!-- IMG BASED LOGO  -->
           <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt="logo"></a> -->
         </div>
@@ -95,7 +95,7 @@
           <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
             <li class="active"><a href="index.html">Home</a></li>            
             <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown">Projects<span class="fa fa-angle-down"></span></a>
+              <a onClick="location.href='project.html'" href="#"class="dropdown-toggle" data-toggle="dropdown" >Projects <span class="fa fa-angle-down"></span></a>
               <ul class="dropdown-menu" role="menu">
                   <li><a href="project.html">Projects Overview</a></li>
                   <li><a href="telangana1.html">Telangana I</a></li>
@@ -104,9 +104,15 @@
                   <li><a href="karnataka1.html">Karnataka I</a></li>
                   <li><a href="karnataka2.html">Karnataka II</a></li>              
               </ul>
-            </li>           
-            <li><a href="gallery.html">Gallery</a></li>           
-            <li><a href="about.html">About us</a></li>
+            </li>                    
+            <li class="dropdown" >
+              <a onClick="location.href='about.html'" href="#" class="dropdown-toggle" data-toggle="dropdown">About us <span class="fa fa-angle-down"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="about.html#mu-our-teacher">Founders</a></li>
+                <li><a href="about.html#team">Team</a></li>
+                <li><a href="about.html#investors">Investors</a></li>            
+            </ul>
+            </li>
             <li><a href="contact.html">Contact</a></li>              
           </ul>                     
         </div><!--/.nav-collapse -->        
@@ -120,11 +126,11 @@
     <!-- Start single slider item -->
     <div class="mu-slider-single">
       <div class="mu-slider-content">
-        <h4>Dawn of new power</h4>
+        <h3 style="color: #f0ffff">Dawn of a new power</h3>
         <span></span>
-        <h2>It’s time to rely on a new power</h2>
-        <p>For clean air, blue sky and a safe planet, 
-          it’s time to give up our destructive reliance on fossil fuels.</p>
+        <h2>It’s time to rely on solar power</h2>
+        <p><h3>For clean air, blue sky and a safe planet,<br> 
+          it’s time to give up our destructive reliance on fossil fuels.</h3></p>
       </div>
     </div>
     <!-- Start single slider item -->   
@@ -134,30 +140,10 @@
   <section id="mu-service">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 col-md-12">
-          <div class="mu-service-area">
-            <!-- Start single service -->
-            <div class="mu-service-single">
-              <span class="fa fa-lightbulb-o"></span>
-              <h3>CAPACITY</h3>
-              <p>158.7 MW</p>
-            </div>
-            <!-- Start single service -->
-            <!-- Start single service -->
-            <div class="mu-service-single">
-              <span class="fa fa-recycle"></span>
-              <h3>CO2 REDUCTION</h3>
-              <p>99,133 TONNES P.A.</p>
-            </div>
-            <!-- Start single service -->
-            <!-- Start single service -->
-            <div class="mu-service-single">
-              <span class="fa fa-users"></span>
-              <h3>REACH OF ELECTRICITY</h3>
-              <p>276,974 PEOPLE</p>
-            </div>
-            <!-- Start single service -->
-          </div>
+        <div class="col-lg-12 col-md-12" style="
+          background-image:  linear-gradient(to bottom right ,#e45536,yellow); height: 20vh;">
+          
+          <h2 align=center style=" padding-top: 50px;color: black">We Build and Run GW scale Solar PV projects in India</h2>
         </div>
       </div>
     </div>
@@ -192,8 +178,8 @@
               </div>
               <div class="col-lg-6 col-md-6">
                 <div class="mu-about-us-right">                            
-                <a id="mu-abtus-video" href="#">
-                  <img src="assets/img/about-us.jpg" alt="img">
+                <a id="mu-abtus-video">
+                  <video src="code.mp4" poster="/assets/img/about-us.jpg" autoplay muted loop ></video>
                 </a>                
                 </div>
               </div>
@@ -213,11 +199,11 @@
           <div class="mu-abtus-counter-area">
             <div class="row">
               <!-- Start counter item -->
-              <div class="col-lg-3 col-md-3 col-sm-3">
+              <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="mu-abtus-counter-single">
                   <span class="fa fa-recycle"></span>
                   <h4 class="counter">99,133</h4>
-                  <p>TONNES P.A.</p>
+                  <p>TONNES P.A. CO2 Saved</p>
                 </div>
               </div>
               <!-- End counter item -->
@@ -226,27 +212,10 @@
                 <div class="mu-abtus-counter-single">
                   <span class="fa fa-users"></span>
                   <h4 class="counter">276,974</h4>
-                  <p>PEOPLE</p>
+                  <p>PEOPLE REACHED</p>
                 </div>
               </div>
-              <!-- End counter item -->
-              <!-- Start counter item -->
-              <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="mu-abtus-counter-single">
-                  <span class="fa fa-lightbulb-o"></span>
-                  <h4 class="counter">158.7</h4>
-                  <p>Mega Watt</p>
-                </div>
-              </div>
-              <!-- End counter item -->
-              <!-- Start counter item -->
-              <div class="col-lg-3 col-md-3 col-sm-3">
-                <div class="mu-abtus-counter-single">
-                  <span class="fa fa-area-chart"></span>
-                  <h4 class="counter">684.97</h4>
-                  <p>Acres Land</p>
-                </div>
-              </div>
+          
               <!-- End counter item -->
             </div>
           </div>
@@ -388,68 +357,36 @@
   </section>
   <!-- End latest projects section -->
 
-  <!-- Start our founders -->
-  <section id="mu-our-teacher">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="mu-our-teacher-area">
-            <!-- begain title -->
-            <div class="mu-title">
-              <h2>The Founding Team </h2>
-            </div>
-            <!-- end title -->
-            <!-- begain our teacher content -->
-            <div class="mu-our-teacher-content" >
-              <div class="row" >
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                  <div class="mu-our-teacher-single" >
-                    <figure class="mu-our-teacher-img">
-                      <img src="assets/img/teachers/teacher-01.png" alt="teacher img">
-                      <div class="mu-our-teacher-social">
-                        <a target="blank" href="https://in.linkedin.com/in/james-abraham-b71698?trk=org-employees_mini-profile_title"><span class="fa fa-linkedin"></span></a>
-                      </div>
-                    </figure>                    
-                    <div class="mu-ourteacher-single-content">
-                      <h4>James Abraham</h4>
-                    </div>
+  <section id="mu-about-us">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="mu-about-us-area">           
+              <div class="row">
+                <div class="col-lg-6 col-md-6">
+                  <div class="mu-about-us-right">                            
+                  <a id="mu-abtus-video">
+                    <img src="assets/img/ourteam2.jpg" alt="img">
+                  </a>                
                   </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                  <div class="mu-our-teacher-single">
-                    <figure class="mu-our-teacher-img">
-                      <img src="assets/img/teachers/teacher-02.png" alt="teacher img">
-                      <div class="mu-our-teacher-social">
-                        <a target="blank" href="https://in.linkedin.com/in/tanya-singhal-34493913?trk=org-employees_mini-profile_image"><span class="fa fa-linkedin"></span></a>
+                <div class="col-lg-6 col-md-6">
+                    <div class="mu-about-us-left">
+                      <!-- Start Title -->
+                      <div class="mu-title">
+                        <h2 style="padding-top:60px">The Founding Team</h2>              
                       </div>
-                    </figure>                    
-                    <div class="mu-ourteacher-single-content">
-                      <h4>Tanya Singhal</h4>
+                      <!-- End Title -->
+                      <p style="line-height: 30px;">We are Tanya Singhal, James Abraham and Anil Nayar.  We've been developing solar plants and technologies in India since 2009. At SolarArise, we bring together our technical, financial, and developmental skills to build a portfolio of solar plants that will generate consistent, low-risk returns for investors. Every prudent investment manager should have our solar plants in their portfolio. 
+                      </p>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                  <div class="mu-our-teacher-single">
-                    <figure class="mu-our-teacher-img">
-                      <img src="assets/img/teachers/teacher-03.png" alt="teacher img">
-                      <div class="mu-our-teacher-social">
-                        <a target="blank" href="https://in.linkedin.com/in/anil-nayar-7a920a1a"><span class="fa fa-linkedin"></span></a>
-                      </div>
-                    </figure>                    
-                    <div class="mu-ourteacher-single-content">
-                      <h4>Anil Nayar</h4>
-                    </div>
-                  </div>
-                </div>
               </div>
-            </div> 
-            <!-- End our founders content -->           
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-  <!-- End our founders -->
+    </section>
 
   <!-- Start testimonial -->
   <section id="mu-testimonial">
@@ -470,7 +407,7 @@
                 </div>
                 <div class="mu-testimonial-info">
                   <h4>James Abraham</h4>
-                  <span>Founder & Director</span>
+                  <span style="color:#333">Founder & Director</span>
                 </div>
               </div>
               <!-- end testimonial single item -->
@@ -486,7 +423,7 @@
                 </div>
                 <div class="mu-testimonial-info">
                   <h4>Tanya Singhal</h4>
-                  <span>Founder & Director</span>
+                  <span style="color:#333">Founder & Director</span>
                 </div>
               </div>
               <!-- end testimonial single item -->
@@ -494,7 +431,7 @@
               <div class="mu-testimonial-item">
                 <div class="mu-testimonial-quote">
                   <blockquote>
-                    <p>We're on the brink of soring the planet for our children...</p>
+                    <p>We're on the brink of saving the planet for our children...</p>
                   </blockquote>
                 </div>
                 <div class="mu-testimonial-img">
@@ -502,7 +439,7 @@
                 </div>
                 <div class="mu-testimonial-info">
                   <h4>Anil Nayar</h4>
-                  <span>Founder & Director</span>
+                  <span style="color:#333">Founder & Director</span>
                 </div>
               </div>
               <!-- end testimonial single item -->
@@ -527,7 +464,6 @@
                 <ul>
                   <li><a href="about.html">About Us</a></li>
                   <li><a href="project.html">Projects</a></li>
-                  <li><a href="gallery.html">Gallery</a></li>
                   <li><a href="press.html">Press</a></li>
                 </ul>
               </div>
@@ -555,8 +491,8 @@
                     Gurgaon, HR
                     122001
                     India</p>
-                  <p>Phone:+91-124-420-4108 </p>
-                  <p>Email:info@solar-arise.com</p>
+                  <p>Phone: +91-124-420-4108 </p>
+                  <p>Email: info@solar-arise.com</p>
                 </address>
               </div>
             </div>

@@ -14,9 +14,6 @@
 #FOUNDER SECTION
 #TESTIMONIAL SECTION
 #FROM BLOG SECTION
-# COURSES PAGE
-#BLOG PAGE
-#GALLERY PAGE
 #CONTACT PAGE
 #ERROR  PAGE
 #FOOTER SECTION
@@ -322,38 +319,7 @@ img {
   text-align: center;
   height: 100%;
 }
-#mu-slider .mu-slider-single .mu-slider-content h4 {
-  letter-spacing: 1px;
-  margin-bottom: 0;
-}
-#mu-slider .mu-slider-single .mu-slider-content span {
-  display: inline-block;
-  height: 1px;
-  width: 100px;
-}
-#mu-slider .mu-slider-single .mu-slider-content h2 {
-  font-size: 50px;
-  line-height: 80px;
-  margin-bottom: 10px;
-}
-#mu-slider .mu-slider-single .mu-slider-content p {
-  font-size: 18px;
-  letter-spacing: 0.5px;
-  line-height: 28px;
-}
-#mu-slider .mu-slider-single .mu-slider-content a {
-  margin-top: 25px;
-}
-#mu-slider .slick-prev,
-#mu-slider .slick-next {
-  height: 60px;
-  width: 60px;
-}
-#mu-slider .slick-prev:before,
-#mu-slider .slick-next:before {
-  color: #fff;
-  font-size: 25px;
-}
+
 
 /*==================
  SERVICE SECTION
@@ -370,7 +336,7 @@ img {
   width: 100%;
 }
 #mu-service .mu-service-area .mu-service-single {
-  background-color: #0086b3;
+  background-color: #ea823b;
   color: #fff;
   display: inline;
   float: left;
@@ -379,10 +345,10 @@ img {
   width: 33.33%;
 }
 #mu-service .mu-service-area .mu-service-single:nth-child(2) {
-  background-color: #009900;
+  background-color: #333;
 }
 #mu-service .mu-service-area .mu-service-single:nth-child(3) {
-  background-color: #e65c00;
+  background-color:#2d7db0 ;
 }
 #mu-service .mu-service-area .mu-service-single span {
   font-size: 30px;
@@ -440,14 +406,16 @@ img {
   width: 100%;
   position: relative;
 }
+#mu-about-us .mu-about-us-area .mu-about-us-right a video {
+  width: 100%;
+}
 #mu-about-us .mu-about-us-area .mu-about-us-right a img {
   width: 100%;
 }
 #mu-about-us .mu-about-us-area .mu-about-us-right a:after {
-  background-color: rgba(0, 0, 0, 0.8);
   bottom: 0;
   color: #ddd;
-  content: '\f04b';
+
   font-family: fontAwesome;
   font-size: 50px;
   left: 0;
@@ -459,30 +427,8 @@ img {
 }
 
 /*==== about us dynamic video player ====*/
-#about-video-popup {
-  background-color: rgba(41, 32, 32, 0.9);
-  position: fixed;
-  left: 0;
-  top: 0;
-  right: 0;
-  text-align: center;
-  bottom: 0;
-  z-index: 99999;
-}
-#about-video-popup span {
-  color: #fff;
-  cursor: pointer;
-  float: right;
-  font-size: 30px;
-  margin-right: 50px;
-  margin-top: 50px;
-}
-#about-video-popup iframe {
-  background: url(../img/loader.gif) center center no-repeat;
-  margin: 10% auto;
-  width: 650px;
-  height: 450px;
-}
+
+
 
 .mu-title {
   display: inline;
@@ -524,7 +470,6 @@ img {
   width: 100%;
 }
 #mu-abtus-counter .mu-abtus-counter-area .mu-abtus-counter-single {
-  border-right: 2px solid #888;
   display: inline;
   float: left;
   text-align: center;
@@ -700,8 +645,11 @@ img {
   width: 100%;
 }
 #mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single {
+  margin-left: 0%;
+  padding-left: 0%
   display: inline;
   float: left;
+  padding: 0%;
   width: 100%;
 }
 #mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single:hover .mu-our-teacher-img .mu-our-teacher-social {
@@ -970,22 +918,6 @@ img {
 }
 
 
-/*==================
- Projects Overview PAGE
-====================*/
-.pimg1, .pimg2, .pimg3{
-  position:relative;
-  opacity:0.70;
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
-}
-
-.pimg1{
-  background-image:url('image1.jpg');
-  min-height:100%;
-}
 
 /*==================
  GALLERY PAGE
@@ -1173,54 +1105,7 @@ img {
   float: left;
   width: 100%;
 }
-#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .contactform {
-  display: inline;
-  float: left;
-  width: 100%;
-}
-#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .contactform .reply-title {
-  font-size: 25px;
-  margin-top: 0;
-}
-#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .contactform label {
-  display: block;
-}
-#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .contactform label .required {
-  color: #f60;
-}
-#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .contactform input[type="text"],
-#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .contactform input[type="email"],
-#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .contactform input[type="url"] {
-  border: none;
-  border: 1px solid #ddd;
-  color: #555;
-  margin-bottom: 10px;
-  height: 35px;
-  padding: 5px;
-  width: 100%;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .contactform textarea {
-  border: none;
-  border: 1px solid #ddd;
-  color: #555;
-  margin-bottom: 5px;
-  padding: 10px;
-  height: 150px;
-  width: 100%;
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-#mu-contact .mu-contact-area .mu-contact-content .mu-contact-left .contactform .form-submit input {
-  margin-top: 10px;
-}
+
 #mu-contact .mu-contact-area .mu-contact-content .mu-contact-right {
   display: inline;
   float: left;
@@ -1230,28 +1115,7 @@ img {
   height: 500px;
 }
 
-/*==================
- ERROR PAGE
-====================*/
-#mu-error {
-  display: inline;
-  float: left;
-  padding: 100px 0;
-  width: 100%;
-}
-#mu-error .mu-error-area {
-  display: inline;
-  float: left;
-  width: 100%;
-  text-align: center;
-}
-#mu-error .mu-error-area p {
-  font-size: 22px;
-}
-#mu-error .mu-error-area h2 {
-  font-size: 200px;
-  line-height: 1.7;
-}
+
 
 /*==================
  FOOTER
