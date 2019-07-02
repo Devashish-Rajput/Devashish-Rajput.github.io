@@ -279,12 +279,7 @@ img {
   float: left;
   width: 100%;
   position: relative;
-  background-image:url('/assets/img/slider/4.jpg');
-  min-height:600px;
-  background-position:center;
-  background-size:cover;
-  background-repeat:no-repeat;
-  background-attachment:fixed;
+  
 }
 #mu-slider .mu-slider-single .mu-slider-img {
   display: inline;
@@ -318,6 +313,52 @@ img {
   width: 100%;
   text-align: center;
   height: 100%;
+}
+#mu-slider .mu-slider-single .mu-slider-content h4 {
+  letter-spacing: 1px;
+  margin-bottom: 0;
+}
+#mu-slider .mu-slider-single .mu-slider-content span {
+  display: inline-block;
+  height: 1px;
+  width: 100px;
+}
+#mu-slider .mu-slider-single .mu-slider-content h2 {
+  font-size: 50px;
+  line-height: 80px;
+  margin-bottom: 10px;
+}
+#mu-slider .mu-slider-single .mu-slider-content p {
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  line-height: 28px;
+}
+#mu-slider .mu-slider-single .mu-slider-content a {
+  margin-top: 100px;
+}
+#mu-slider .slick-prev,
+#mu-slider .slick-next {
+  height: 60px;
+  width: 60px;
+}
+#mu-slider .slick-prev:before,
+#mu-slider .slick-next:before {
+  color: #fff;
+  font-size: 25px;
+}
+#press{
+  display: inline-block;
+  float: left;
+}
+#press .col-lg-3{
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+#press p{
+  min-height: 100px;
+  font-size: 17px;
 }
 
 
@@ -646,7 +687,7 @@ img {
 }
 #mu-our-teacher .mu-our-teacher-area .mu-our-teacher-content .mu-our-teacher-single {
   margin-left: 0%;
-  padding-left: 0%
+  padding-left: 0%;
   display: inline;
   float: left;
   padding: 0%;
