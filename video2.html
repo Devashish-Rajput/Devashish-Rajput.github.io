@@ -263,6 +263,16 @@
 
         };
     </script>
+    <script>
+        // Listen for message from parent window
+        window.addEventListener('message', function(event) {
+            if (event.data === 'getHeight') {
+                // Post the height of the body back to the parent window
+                var bodyHeight = document.body.scrollHeight;
+                window.parent.postMessage({ height: bodyHeight }, '*');
+            }
+        });
+    </script>
 </body>
 
 </html>
