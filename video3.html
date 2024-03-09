@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Video Player 3</title>
+        <meta name="description" content="HLS.JS And Plyr Demo">
+    </head>
+    <link rel='stylesheet' href='https://cdn.plyr.io/3.6.9/plyr.css'>
+    <style>
+        body {
+            font-family: sans-serif;
+            font-weight: 400;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+            padding-bottom: 60px;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            padding-bottom: 50px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            --plyr-color-main: #ee0707;
+            /*Player Theme Colour*/
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="video-wrapper">
+        <video preload="none" id="player" controls crossorigin playsinline></video>
+    </div>
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/plyr/3.7.3/plyr.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.0.12/hls.min.js'></script>
+<script>
+    const players = Plyr.setup("video");
+    window.players = players;
+    (function () {
+        var video = document.querySelector("#player");
+        if (Hls.isSupported()) {
+            var hls = new Hls();
+            hls.loadSource(
+                "https://raw.githubusercontent.com/power10101/2000/main/2001/playlist.m3u8"
+            );
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            });
+        }
+        plyr.setup(video);
+    })();
+</script>
+</body>
+
+</html>
