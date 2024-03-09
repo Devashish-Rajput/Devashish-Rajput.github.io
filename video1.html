@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Video Player 1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://unpkg.com/plyr@3/dist/plyr.css'>
+    <style>
+        .container {
+
+            width: 100%;
+        }
+
+        video {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        <video controls crossorigin playsinline></video>
+    </div> 
+    <script src="https://cdn.rawgit.com/video-dev/hls.js/18bb552/dist/hls.min.js"></script>
+    <script src='https://cdn.polyfill.io/v2/polyfill.min.js?features=es6,Array.prototype.includes,CustomEvent,Object.entries,Object.values,URL'></script>
+    <script src='https://unpkg.com/plyr@3'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const source = 'https://raw.githubusercontent.com/power10101/2000/main/2001/playlist.m3u8';
+            const video = document.querySelector('video');
+            const player = new Plyr(video, { captions: { active: true, update: true, language: 'en' } });
+
+            if (!Hls.isSupported()) {
+                video.src = source;
+            } else {
+                const hls = new Hls();
+                hls.loadSource(source);
+                hls.attachMedia(video);
+                window.hls = hls;
+                player.on('languagechange', () => {
+                    setTimeout(() => hls.subtitleTrack = player.currentTrack, 50);
+                });
+            }
+            window.player = player;
+        });
+    </script>
+</body>
+
+</html>
