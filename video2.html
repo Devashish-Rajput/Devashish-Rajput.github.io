@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Video Player 2</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/plyr/2.0.18/plyr.css'>
+    <style>
+        body {
+            font-family: "DroidArabicKufiRegular";
+            font-weight: normal;
+            font-style: normal;
+            direction: rtl;
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgb(190, 223, 137);
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        }
+
+        ::-webkit-scrollbar-thumb:window-inactive {
+            background: rgb(189, 222, 135);
+        }
+
+        .portlet:not(.portlet-fullscreen) .heading:before {
+            position: absolute;
+            content: "";
+            vertical-align: middle;
+            width: 12px;
+            height: 27px;
+            background: #ff931e;
+            right: 0px;
+        }
+
+        a.SmallVideo {
+            position: absolute;
+            right: 0px;
+            z-index: 1;
+            color: #000;
+            font-size: 16px;
+            top: -32px;
+            background: #c0e28b;
+            padding: 1px 5px;
+            display: none;
+        }
+
+        .SmallVideo {
+            position: fixed;
+            bottom: 0px;
+            left: 10px;
+            width: 40vw;
+            z-index: 999;
+            transition: 0.1s;
+            max-width: 355px;
+        }
+
+        .videoContainer {
+            max-width: 100%;
+            margin: 10px auto;
+        }
+
+        .reposition {
+            position: absolute;
+            top: 3px;
+            color: #000;
+            background-color: #bedf89;
+            right: 3px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+        }
+
+        [enable-indent] {
+            text-indent: 50px;
+        }
+
+        .entry-content {
+            width: 90%;
+            margin: 0 auto;
+            -moz-tab-size: 8;
+            -o-tab-size: 8;
+            tab-size: 8;
+        }
+
+        @media only screen and (min-width: 768px) {
+            .entry-content {
+                width: 100%;
+                max-width: 768px;
+                -moz-column-count: 2;
+                column-count: 2;
+                -moz-column-gap: 42px;
+                column-gap: 42px;
+                -moz-column-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            .entry-content {
+                max-width: 1024px;
+                -moz-column-count: 3;
+                column-count: 3;
+                -moz-column-gap: 42px;
+                column-gap: 42px;
+                -moz-column-break-inside: avoid;
+                break-inside: avoid;
+            }
+        }
+
+        .entry-content p {
+            margin-top: 0;
+            margin-bottom: 24px;
+        }
+
+        .closeSmallVideoBtn {
+            display: inline-block;
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 9px;
+            padding: 6px;
+            background: #3498db;
+            border: 4px solid currentColor;
+            border-radius: 100%;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
+            color: #fff;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+            outline: none;
+        }
+
+        .closeSmallVideoBtn svg {
+            left: 0;
+            position: relative;
+            left: 0px;
+            width: 20px;
+            height: 20px;
+            display: block;
+            fill: currentColor;
+        }
+    </style>
+</head>
+
+<body >
+    <div class="container">
+        <div class="row">
+            <div>
+
+                <video id="my-video" class="video-js" preload="none" controls playsinline webkit-playsinline>
+                </video>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/8.0.0-beta.3/hls.min.js"></script>
+                <script>
+                    var video = document.getElementById("my-video");
+                    if (Hls.isSupported()) {
+                        var hls = new Hls();
+                        hls.loadSource("https://raw.githubusercontent.com/power10101/2000/main/2001/playlist.m3u8");
+                        hls.attachMedia(video);
+                        // video.play();
+                    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+                        video.src = "https://raw.githubusercontent.com/Devashish-Rajput/1400/main/playlist.m3u8";
+                        video.addEventListener("loadedmetadata", function () {
+                            // video.play();
+                        });
+                    }
+                </script>
+
+            </div>
+        </div>
+
+    </div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/plyr/2.0.18/plyr.js'></script>
+    <script>
+        $(document).ready(function () {
+            VideoAudioHandler();
+        });
+
+        var StopAllVideoNotv = function (v) {
+            $(plyr.get()).each(function () {
+
+                if (this.getContainer() != v.detail.plyr.getContainer()) {
+                    this.pause();
+                }
+            });
+        };
+        var GetPlayingVideo = function () {
+            $("video").filter(function () {
+                var video = $(this).get(0);
+                return !video.paused;
+            });
+        };
+        var VideoAudioHandler = function () {
+
+
+
+            $("video").each(function () {
+
+                $('<div class="videoContainer"></div>').insertBefore(this).append(this);
+                $(this).attr("video-id", "video-" + Date.now());
+
+            });
+
+
+            plyr.setup(document.querySelectorAll("video"), {
+                enabled: true
+            });
+
+            $(plyr.get()).each(function () {
+                this.on('playing', function (event) {
+                    StopAllVideoNotv(event);
+                    CloseSmallVideo();
+                });
+            });
+
+
+
+
+
+            $(window).scroll(function () {
+
+                var PlayingVideo = $(plyr.get()).filter(function () {
+                    return !this.isPaused();
+                })[0];
+                if (PlayingVideo == undefined) return 0;
+                if (!$(PlayingVideo.getContainer()).visible(true) && $(".SmallVideo").length == 0) {
+                    PlayingVideo.pause();
+                    var n = $("<div class='SmallVideo'></div>");
+                    n.attr("related-video", $(PlayingVideo.getMedia()).attr("video-id"));
+                    var sv = $(PlayingVideo.getMedia()).clone();
+                    sv.get(0).currentTime = PlayingVideo.getCurrentTime();
+                    n.append(sv);
+                    n.appendTo("body");
+                    plyr.setup('.SmallVideo', {
+                        enabled: true,
+                        autoplay: true
+                    });
+
+                    $('<button type="button" onclick="CloseSmallVideo(this)" class="closeSmallVideoBtn" aria-label="Play"><svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"viewBox="0 0 47.971 47.971" style="enable-background:new 0 0 47.971 47.971;" xml:space="preserve"> <g> <path d="M28.228,23.986L47.092,5.122c1.172-1.171,1.172-3.071,0-4.242c-1.172-1.172-3.07-1.172-4.242,0L23.986,19.744L5.121,0.88 c-1.172-1.172-3.07-1.172-4.242,0c-1.172,1.171-1.172,3.071,0,4.242l18.865,18.864L0.879,42.85c-1.172,1.171-1.172,3.071,0,4.242 C1.465,47.677,2.233,47.97,3,47.97s1.535-0.293,2.121-0.879l18.865-18.864L42.85,47.091c0.586,0.586,1.354,0.879,2.121,0.879 s1.535-0.293,2.121-0.879c1.172-1.171,1.172-3.071,0-4.242L28.228,23.986z"/> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> <g> </g> </svg></button>').appendTo('.SmallVideo .plyr');
+                }
+                else {
+
+                }
+
+
+            });
+        };
+
+        var CloseSmallVideo = function (e) {
+
+            if ($(".SmallVideo").length == 0) return 0;
+            var v = plyr.get($(".SmallVideo .plyr").get(0));
+            v[0].pause();
+            $(".SmallVideo").remove();
+
+        };
+    </script>
+</body>
+
+</html>
