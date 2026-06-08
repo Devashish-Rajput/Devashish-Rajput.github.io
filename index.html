@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#ff7a18" />
+  <title>Devashish Rajput • Systems Engineer — Interactive Resume</title>
+  <meta name="description"
+    content="Interactive resume with dynamic showcase: automation, observability, and platform work over the last 3 years. Includes image/GIF slider and presenter mode." />
+
+  <!-- Open Graph (nice preview) -->
+  <meta property="og:title" content="Devashish Rajput — Interactive Resume" />
+  <meta property="og:description" content="Live showcase with dynamic slides and timeline." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ============ THEME ============ */
+    :root {
+      --bg: #0f0f12;
+      --surface: #17171c;
+      --text: #eef0f2;
+      --muted: #b8bec9;
+      --accent: #ff7a18;
+      /* 🔶 Orange */
+      --accent-2: #ffb44c;
+      --ok: #18c29c;
+      --warn: #ffd166;
+      --err: #ef476f;
+      --ring: 0 0 0 3px color-mix(in oklab, var(--accent) 38%, transparent);
+      --radius: 14px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+      --grad: conic-gradient(from 220deg at 10% 10%, #2c2d33, #17171c 40%, #2c2d33 60%, #17171c 80%, #2c2d33);
+      --spot: radial-gradient(1100px 600px at 10% -10%, color-mix(in oklab, var(--accent) 42%, transparent), transparent 40%),
+        radial-gradient(900px 500px at 120% 10%, color-mix(in oklab, var(--accent-2) 35%, transparent), transparent 55%);
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #fffefc;
+        --surface: #ffffff;
+        --text: #16181d;
+        --muted: #5b6472;
+        --shadow: 0 8px 28px rgba(16, 24, 40, 0.12);
+        --grad: conic-gradient(from 220deg at 10% 10%, #ffffff, #f6f7fb 40%, #ffffff 60%, #f6f7fb 80%, #ffffff);
+      }
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      font: 16px/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+      color: var(--text);
+      background:
+        var(--spot),
+        var(--grad),
+        radial-gradient(800px 500px at 50% -10%, rgba(255, 122, 24, .08), transparent 70%),
+        linear-gradient(180deg, color-mix(in oklab, var(--surface) 96%, transparent) 0%, var(--bg) 60%);
+      background-attachment: fixed, fixed, fixed, fixed;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    .container {
+      width: min(1120px, 92vw);
+      margin-inline: auto
+    }
+
+    /* ===== Header / Nav ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(120%) blur(8px);
+      background: color-mix(in oklab, var(--surface) 72%, transparent);
+      border-bottom: 1px solid color-mix(in oklab, var(--muted) 20%, transparent);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: .3px
+    }
+
+    .logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 6px 18px color-mix(in oklab, var(--accent) 30%, transparent);
+      display: grid;
+      place-items: center;
+      color: #0b0b0e;
+      font-weight: 900;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 18px;
+      list-style: none;
+      padding: 0;
+      margin: 0
+    }
+
+    nav a {
+      padding: 8px 12px;
+      border-radius: 10px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav a.active,
+    nav a:hover {
+      background: color-mix(in oklab, var(--accent) 20%, transparent);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: color-mix(in oklab, var(--accent) 24%, transparent);
+      color: var(--text);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform .15s ease, filter .15s ease, background .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05)
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #101114;
+    }
+
+    .btn.ghost {
+      background: transparent;
+      border: 1px solid color-mix(in oklab, var(--muted) 26%, transparent)
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 40px 0 28px;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: color-mix(in oklab, var(--accent) 18%, transparent);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: .9rem
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3.2vw, 2.6rem);
+      line-height: 1.1;
+      margin: 10px 0 8px
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.4vw, 1.1rem)
+    }
+
+    .kpis {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 16px
+    }
+
+    .kpi {
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: color-mix(in oklab, var(--surface) 86%, transparent);
+      border: 1px solid color-mix(in oklab, var(--muted) 20%, transparent);
+      min-width: 140px;
+    }
+
+    .kpi b {
+      font-size: 1.3rem
+    }
+
+    .hero .shot {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid color-mix(in oklab, var(--muted) 20%, transparent);
+      box-shadow: var(--shadow);
+    }
+
+    .hero .shot img {
+      width: 100%;
+      display: block
+    }
+
+    /* ===== Sections ===== */
+    section {
+      padding: 42px 0
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+      font-size: clamp(1.4rem, 2.2vw, 1.8rem)
+    }
+
+    .section-title .line {
+      flex: 1;
+      height: 1px;
+      background: color-mix(in oklab, var(--muted) 24%, transparent)
+    }
+
+    /* ===== Timeline ===== */
+    .timeline {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    .year {
+      grid-column: span 4;
+    }
+
+    .year .card {
+      height: 100%;
+      border-radius: 16px;
+      background: color-mix(in oklab, var(--surface) 85%, transparent);
+      border: 1px solid color-mix(in oklab, var(--muted) 22%, transparent);
+      box-shadow: var(--shadow);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tag {
+      font-size: .85rem;
+      color: var(--muted)
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: color-mix(in oklab, var(--accent) 16%, transparent);
+      font-size: .85rem
+    }
+
+    .card .points {
+      margin: 0;
+      padding-left: 18px
+    }
+
+    .card .points li {
+      margin: 6px 0
+    }
+
+    /* ===== Slider ===== */
+    .slider {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid color-mix(in oklab, var(--muted) 22%, transparent);
+      background: #0c0d11;
+      box-shadow: var(--shadow);
+    }
+
+    .slides {
+      display: flex;
+      transition: transform .5s ease;
+      will-change: transform;
+    }
+
+    .slide {
+      min-width: 100%;
+      position: relative;
+      height: 450px;
+      aspect-ratio: 16/9;
+      background: #000;
+      display: grid;
+      /* place-items: center; */
+      align-items: center;
+    }
+
+    .slide img,
+    .slide video {
+      align-items: center;
+      width: 90%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, .55) 60%);
+      color: #fff;
+      padding: 22px 18px 14px;
+      font-size: .95rem;
+    }
+
+    .controls {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px;
+      pointer-events: none;
+    }
+
+    .controls button {
+      pointer-events: auto;
+      border: 0;
+      border-radius: 12px;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: rgba(0, 0, 0, .38);
+      color: #fff;
+      backdrop-filter: blur(4px);
+    }
+
+    .dots {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 10px;
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #ffffff55
+    }
+
+    .dot.active {
+      background: #fff
+    }
+
+    .progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transition: width .25s linear;
+    }
+
+    /* ===== Skills ===== */
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px
+    }
+
+    .skills .left {
+      grid-column: span 7
+    }
+
+    .skills .right {
+      grid-column: span 5
+    }
+
+    .bar {
+      background: color-mix(in oklab, var(--muted) 16%, transparent);
+      height: 10px;
+      border-radius: 999px;
+      overflow: hidden
+    }
+
+    .bar>span {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2))
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      margin-top: 26px;
+      padding: 28px 0;
+      border-top: 1px solid color-mix(in oklab, var(--muted) 22%, transparent);
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    /* ===== Utilities ===== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px
+    }
+
+    .card {
+      border-radius: 16px;
+      background: color-mix(in oklab, var(--surface) 86%, transparent);
+      border: 1px solid color-mix(in oklab, var(--muted) 22%, transparent);
+      box-shadow: var(--shadow);
+      padding: 16px
+    }
+
+    .muted {
+      color: var(--muted)
+    }
+
+    .sr-only {
+      position: absolute;
+      left: -10000px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden
+    }
+
+    /* Reveal on scroll */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .5s ease, transform .5s ease
+    }
+
+    .in-view {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    /* Presenter spotlight */
+    .spotlight-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(400px 400px at var(--x, -10px) var(--y, -10px), transparent 0 55%, rgba(0, 0, 0, .5) 65%);
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+
+    .spotlight-on .spotlight-overlay {
+      opacity: 1
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline .year {
+        grid-column: span 12
+      }
+
+      .skills .left {
+        grid-column: span 12
+      }
+
+      .skills .right {
+        grid-column: span 12
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr
+      }
+
+      .nav .hide-sm {
+        display: none
+      }
+    }
+
+    /* Print (make it clean) */
+    @media print {
+
+      header,
+      .nav-actions,
+      .slider .controls,
+      .dots,
+      .spotlight-overlay {
+        display: none !important
+      }
+
+      body {
+        background: #fff;
+        color: #000
+      }
+
+      .card,
+      .slider {
+        box-shadow: none;
+        border: 1px solid #ddd
+      }
+
+      a {
+        color: #000;
+        text-decoration: none
+      }
+
+      .slide {
+        aspect-ratio: auto
+      }
+    }
+  </style>
+  <style>
+    .custom1slider {
+      height: 250px;
+      margin: auto;
+      position: relative;
+      width: 90%;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .custom1slide-track {
+      display: flex;
+      width: calc(350px * 8);
+      animation: scroll 20s linear infinite;
+    }
+
+    .custom1slide-track:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(calc(-250px * 4));
+      }
+    }
+
+    .custom1slide {
+      height: 200px;
+      width: 350px;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      perspective: 100px;
+    }
+
+    .custom1slide img {
+      width: 100%;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .custom1slide img:hover {
+      transform: scale(1.08) translateZ(20px);
+    }
+
+    .custom1slider::before,
+    .custom1slider::after {
+      /* background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 0) 100%); */
+      content: "";
+      height: 100%;
+      position: absolute;
+      width: 15%;
+      z-index: 2;
+    }
+
+    .custom1slider::before {
+      left: 0;
+      top: 0;
+    }
+
+    .custom1slider::after {
+      right: 0;
+      top: 0;
+      transform: rotateZ(180deg);
+    }
+
+    .skills-wrapper {
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 100%;
+    }
+
+    .skill-pill {
+      display: inline-block;
+      background-color: #f4ab1a;
+      color: #000000;
+      padding: 8px 18px;
+      margin: 6px;
+      font-size: 16px;
+      border-radius: 10px;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+
+    /* Zoom Modal */
+    .zoom-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.98);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    .zoom-modal.active {
+      display: flex;
+    }
+
+    .zoom-modal-content {
+      position: relative;
+      max-width: 80vw;
+      max-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .zoom-modal-content img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    .zoom-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 32px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      z-index: 2001;
+    }
+
+    .zoom-modal-close:hover {
+      background: rgba(255, 122, 24, 0.8);
+      transform: rotate(90deg) scale(1.1);
+    }
+
+    .zoom-modal-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+      z-index: 2001;
+    }
+
+    .zoom-modal-nav:hover {
+      background: rgba(255, 122, 24, 0.9);
+      border-color: #ff7a18;
+      transform: translateY(-50%) scale(1.15);
+    }
+
+    .zoom-modal-prev {
+      left: 30px;
+    }
+
+    .zoom-modal-next {
+      right: 30px;
+    }
+
+    .zoom-modal-counter {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 122, 24, 0.4);
+      z-index: 2001;
+    }
+
+    @media (max-width: 768px) {
+      .zoom-modal-nav {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+
+      .zoom-modal-prev {
+        left: 10px;
+      }
+
+      .zoom-modal-next {
+        right: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true">DR</div>
+        <div>
+          <div>Devashish Rajput</div>
+          <small class="muted">Systems Engineer • Automation & Observability</small>
+        </div>
+      </div>
+      <nav aria-label="Primary">
+        <ul>
+          <li
+            style="background-color: orange; padding-left: 5px; padding-right: 5px;border-radius: 3px; font-weight: bold; font-size: 12px;">
+            #Python</a></li>
+          <li
+            style="background-color: orange; padding-left: 5px; padding-right: 5px;border-radius: 5px; font-weight: bold; font-size: 12px;">
+            #Automation</a></li>
+          <li
+            style="background-color: orange; padding-left: 5px; padding-right: 5px;border-radius: 5px; font-weight: bold; font-size: 12px;">
+            #Scripting</a></li>
+          <li
+            style="background-color: orange; padding-left: 5px; padding-right: 5px;border-radius: 5px; font-weight: bold; font-size: 12px;">
+            #Power_Automate</a></li>
+          <li
+            style="background-color: orange; padding-left: 5px; padding-right: 5px;border-radius: 5px; font-weight: bold; font-size: 12px;">
+            #Information_Management</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <button id="presenterBtn" class="btn ghost" title="Spotlight (S)">Spotlight</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Intro / Hero -->
+    <section id="intro" class="container hero" data-reveal>
+      <div>
+        <span class="badge" style="font-weight: bold;">🔶 Systems Engineer • OIC OI COE AiOps and App Tools</span>
+        <h1>
+          Systems Engineer focused on <span style="color:var(--accent)">automation</span>, <span
+            style="color:var(--accent-2)">reliability</span>, and delightful developer experience.
+        </h1>
+        <p class="lead" id="typewriter">
+          I build small tools and custom scripts to perform complex multi-step tasks into fast single click workflows.
+        </p>
+        <div style="
+            padding: 20px;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #333;
+            width: fit-content;
+            font-family: 'Segoe UI', sans-serif;
+            border-left: 6px solid #ff7a00;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+            animation: fadeIn 0.8s ease-in-out;
+        ">
+          <h3 style="
+              margin: 10px 0;
+              font-size: 22px;
+              font-weight: 600;
+              color: #ff7a00;
+          ">
+            💼 Experience: 3 Years 9 Months
+          </h3>
+          <h3 style="
+              margin: 10px 0;
+              font-size: 22px;
+              font-weight: 600;
+              color: #ff7a00;
+          ">
+            🚀 Aug 2022 Joining - First Company
+          </h3>
+
+          <h3 style="
+              margin: 10px 0;
+              font-size: 22px;
+              font-weight: 600;
+              color: #ff7a00;
+          ">
+            🎓 BTech - Computer Science & Engineering 2018-2022
+          </h3>
+        </div>
+
+        <style>
+          @keyframes fadeIn {
+            from {
+              opacity: 0;
+              transform: translateY(10px);
+            }
+
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+        </style>
+      </div>
+      <div class="shot">
+        <!-- Replace with a branded banner or GIF -->
+        <img src="ok\automation.gif" alt="">
+        <!-- https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop -->
+      </div>
+    </section>
+
+    <!-- Skills & Demos -->
+    <section id="skills" class="container" data-reveal>
+      <div class="section-title">
+        <h2>Skills</h2>
+        <div class="line"></div>
+      </div>
+
+      <div class="skills">
+        <div class="left card">
+          <h3>Core</h3>
+          <p class="muted">Python (Flask, Selenium), APIs, Observability, Automation, CI, Systems thinking.</p>
+          <div style="display:grid; gap:12px; margin-top:8px">
+            <div>
+              <div style="display:flex; justify-content:space-between">
+                <span>Python</span>
+                <!-- <span class="muted">Intermediate</span> -->
+              </div>
+              <div class="bar"><span style="width:54%"></span></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between">
+                <span>Automation / Scripting</span>
+                <!-- <span class="muted">Advanced</span> -->
+              </div>
+              <div class="bar"><span style="width:75%"></span></div>
+            </div>
+
+            <div>
+              <div style="display:flex; justify-content:space-between">
+                <span>SolarWinds / Monitoring</span>
+                <!-- <span class="muted">Intermediate</span> -->
+              </div>
+              <div class="bar"><span style="width:57%"></span></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between">
+                <span>ThousandEyes / Monitoring</span>
+                <!-- <span class="muted">Intermediate</span> -->
+              </div>
+              <div class="bar"><span style="width:50%"></span></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between">
+                <span>SharePoint</span>
+                <!-- <span class="muted">Advanced</span> -->
+              </div>
+              <div class="bar"><span style="width:70%"></span></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between">
+                <span>Power Automate, Power Apps, PowerBI</span>
+                <!-- <span class="muted">Intermediate</span> -->
+              </div>
+              <div class="bar"><span style="width:55%"></span></div>
+            </div>
+            <div>
+              <div style="display:flex; justify-content:space-between">
+                <span>HTML, CSS, JavaScript</span>
+                <!-- <span class="muted">Intermediate</span> -->
+              </div>
+              <div class="bar"><span style="width:51%"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="right card" >
+          <br>
+          <br>
+          <br>
+          <img src="ok\Skills Gif.gif" style="width: 100%;">
+        </div>
+      </div>
+      <div class="skills-wrapper">
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">HTML</span>
+        <span class="skill-pill">CSS</span>
+        <span class="skill-pill">JavaScript</span>
+        <span class="skill-pill">Selenium</span>
+        <span class="skill-pill">Scripting</span>
+        <span class="skill-pill">SolarWinds</span>
+        <span class="skill-pill">ThousandEyes</span>
+        <span class="skill-pill">Automation</span>
+        <span class="skill-pill">Visual Studio</span>
+        <span class="skill-pill">Google Colab</span>
+        <span class="skill-pill">Anaconda</span>
+        <span class="skill-pill">Spyder</span>
+        <span class="skill-pill">Power Automate</span>
+        <span class="skill-pill">SharePoint</span>
+        <span class="skill-pill">Power Apps</span>
+        <span class="skill-pill">PowerBI</span>
+        <span class="skill-pill">Information Management</span>
+        <span class="skill-pill">Web Scraping</span>
+      </div>
+    </section>
+    <section style="padding: 30px; font-family: 'Segoe UI', sans-serif;" class="container">
+      <h2 style="
+      font-size: 30px;
+      margin-bottom: 25px;
+      font-weight: 700;
+      border-left: 6px solid #ff7a00;
+      padding-left: 12px;
+  ">Job History</h2>
+
+
+      <!-- 🟧 JOB CARD 1 -->
+      <div style="
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      border-left: 6px solid #ff7a00;
+  ">
+        <h3 style="margin: 0; color: #ff7a00; font-size: 22px; font-weight: 700;">
+          Systems Engineer – OIC OOE AIOps and App Tools
+        </h3>
+        <p style="margin: 2px 0 15px 0; color: #666;">
+          Shell plc | July 2025 – Present | 10 months
+        </p>
+
+        <h4 style="color: #ff7a00; margin-bottom: 6px;">OVERALL SUMMARY</h4>
+        <p style="color: #444; line-height: 1.6;">
+          Systems Engineer specializing in SolarWinds-based network monitoring and Python automation.
+          Built multiple automation solutions—from Flask micro‑apps to Selenium workflows—that
+          significantly reduced manual effort for the team. ThousandEyes Nodejs Selenium scripts for application
+          monitoring.
+        </p>
+
+        <h4 style="color: #ff7a00; margin-bottom: 6px;">Key Skills:</h4>
+        <p style="color: #444; line-height: 1.6;">
+          Python, Automation, Scripting, Flask, Selenium, SolarWinds, API Integration, ThousandEyes
+        </p>
+
+        <h4 style="color: #ff7a00; margin-bottom: 6px;">Key Achievements:</h4>
+        <ul style="color: #444; line-height: 1.6; padding-left: 20px;">
+          <li>Automated multi‑step SolarWinds tasks into single‑click workflows.</li>
+          <li>Developed Flask micro‑application for streamlined operations.</li>
+          <li>Created Selenium scripts for large‑scale device migration.</li>
+          <li>Built a customizable backend GUI automation tool for fast SolarWinds actions.</li>
+        </ul>
+      </div>
+
+
+
+      <!-- 🟧 JOB CARD 2 -->
+      <div style="
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      border-left: 6px solid #ff7a00;
+  ">
+        <h3 style="margin: 0; color: #ff7a00; font-size: 22px; font-weight: 700;">
+          Associate IM Advisor – SharePoint SME OIC
+        </h3>
+        <p style="margin: 2px 0 15px 0; color: #666;">
+          Shell plc | August 2022 – June 2025 | 2 years 10 months | Bengaluru
+        </p>
+
+        <h4 style="color: #ff7a00; margin-bottom: 6px;">OVERALL SUMMARY</h4>
+        <p style="color: #444; line-height: 1.6;">
+          Leveraged Python and Power Automate to increase SharePoint productivity by 30%.
+          Built custom SharePoint dashboards, document libraries, webparts, and automation flows
+          that enhanced business productivity across teams.
+        </p>
+
+        <h4 style="color: #ff7a00; margin-bottom: 6px;">Key Skills:</h4>
+        <p style="color: #444; line-height: 1.6;">
+          Python, HTML, CSS, JavaScript, Selenium, SharePoint, Automation, Power Automate,
+          Information Management, Web Scraping, Visual Studio, Anaconda
+        </p>
+
+        <h4 style="color: #ff7a00; margin-bottom: 6px;">Key Achievements:</h4>
+        <ul style="color: #444; line-height: 1.6; padding-left: 20px;">
+          <li>Automated end‑to‑end SharePoint workflows improving productivity by 30%.</li>
+          <li>Developed compliance check scripts and automated reminders.</li>
+          <li>Redesigned the IM portal improving accessibility and UX.</li>
+          <li>Created automation projects that significantly improved efficiency across the organization.</li>
+        </ul>
+      </div>
+
+
+
+      <!-- 🟧 JOB CARD 3 -->
+      <div style="
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      border-left: 6px solid #ff7a00;
+  ">
+        <h3 style="margin: 0; color: #ff7a00; font-size: 22px; font-weight: 700;">
+          Intern
+        </h3>
+        <p style="margin: 2px 0 15px 0; color: #666;">
+          SolarArise Pvt Ltd | May 2021 – July 2021 | 2 months | Gurugram
+        </p>
+
+        <h4 style="color: #ff7a00; margin-bottom: 6px;">OVERALL SUMMARY</h4>
+        <p style="color: #444; line-height: 1.6;">
+          Worked as a Web and Data Analytics intern. Built scripts for Python‑based data analysis
+          and contributed to the development of the company's portfolio website.
+        </p>
+
+        <h4 style="color: #ff7a00; margin-bottom: 6px;">Key Achievements:</h4>
+        <ul style="color: #444; line-height: 1.6; padding-left: 20px;">
+          <li>Created analytics scripts for Python automations.</li>
+          <li>Built industry‑standard portfolio website.</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section id="skills" class="container" data-reveal>
+      <div class="section-title">
+        <h2>Projects</h2>
+        <div class="line"></div>
+      </div>
+      <div class="custom1slider">
+        <div class="custom1slide-track">
+          <div class="custom1slide">
+            <img src="ok/Python Quick Automation Toolbar2.webp">
+          </div>
+          <div class="custom1slide">
+            <img src="ok\Custom Selenium Scripts2.webp">
+          </div>
+          <div class="custom1slide">
+            <img src="ok/NRD Reminder Automation.webp">
+          </div>
+          <div class="custom1slide">
+            <img src="ok\output.webp">
+          </div>
+          <div class="custom1slide">
+            <img src="ok\Power Automate Flow DIY.png">
+          </div>
+          <div class="custom1slide">
+            <img src="ok\Custom Selenium Scripts.webp">
+          </div>
+          <!-- <div class="custom1slide">
+            <img src="ok/NRD Reminder Automation.webp">
+          </div>
+          <div class="custom1slide">
+            <img src="ok\output.webp">
+          </div> -->
+          <!-- <div class="custom1slide">
+          <img src="ok\automation.gif">
+        </div>
+        <div class="custom1slide">
+          <img src="ok\automation.gif">
+        </div>
+        <div class="custom1slide">
+          <img src="ok\automation.gif">
+        </div>
+        <div class="custom1slide">
+          <img src="ok\automation.gif">
+        </div>
+        <div class="custom1slide">
+          <img src="ok\automation.gif">
+        </div> -->
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="container" data-reveal>
+      <div class="section-title">
+        <h2>Achievements</h2>
+        <div class="line"></div>
+      </div>
+      <div class="custom1slider">
+        <div class="custom1slide-track">
+          <div class="custom1slide">
+            <img src="ok/c1.jpg">
+          </div>
+          <div class="custom1slide">
+            <img src="ok/C120250729_161832.jpg">
+          </div>
+          <div class="custom1slide">
+            <img src="ok/C1All together.jpg">
+          </div>
+          <div class="custom1slide">
+            <img src="ok/C4.png">
+          </div>
+          <div class="custom1slide">
+            <img src="ok/C2.jpg">
+          </div>
+          <div class="custom1slide">
+            <img src="ok/C2Hackathon Certificate Distribution.png">
+          </div>
+          <div class="custom1slide">
+            <img src="ok/C3.jpg">
+          </div>
+          <div class="custom1slide">
+            <img src="ok/C3Image (2) 1.jpg">
+          </div>
+          <div class="custom1slide">
+            <img src="ok/C3Image (3).jpg">
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Zoom Modal -->
+    <div class="zoom-modal" id="zoomModal">
+      <div class="zoom-modal-content">
+        <button class="zoom-modal-close" id="zoomModalClose" aria-label="Close">✕</button>
+        <img id="zoomModalImage" src="" alt="Full zoom view">
+        <button class="zoom-modal-nav zoom-modal-prev" id="zoomModalPrev" aria-label="Previous">⟨</button>
+        <button class="zoom-modal-nav zoom-modal-next" id="zoomModalNext" aria-label="Next">⟩</button>
+        <div class="zoom-modal-counter" id="zoomModalCounter">1 / 11</div>
+      </div>
+    </div>
+
+    <script>
+      // ===== Zoom Modal for Multiple Sections =====
+      (function initZoomGallery() {
+        const zoomModal = document.getElementById('zoomModal');
+        const zoomModalImage = document.getElementById('zoomModalImage');
+        const zoomModalClose = document.getElementById('zoomModalClose');
+        const zoomModalPrev = document.getElementById('zoomModalPrev');
+        const zoomModalNext = document.getElementById('zoomModalNext');
+        const zoomModalCounter = document.getElementById('zoomModalCounter');
+
+        let currentIndex = 0;
+        let currentImages = [];
+
+        // Initialize each .custom1slider section
+        document.querySelectorAll('.custom1slider').forEach((slider, sliderIndex) => {
+          const images = [];
+          const sliderImages = slider.querySelectorAll('.custom1slide img');
+
+          // Collect all images from this slider
+          sliderImages.forEach((img, imgIndex) => {
+            images.push(img.src);
+
+            // Add click listener to each image
+            img.addEventListener('click', () => {
+              currentImages = images;
+              currentIndex = imgIndex;
+              openZoomModal();
+            });
+          });
+        });
+
+        function openZoomModal() {
+          zoomModalImage.src = currentImages[currentIndex];
+          zoomModalCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+          zoomModal.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        }
+
+        function closeZoomModal() {
+          zoomModal.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        function nextZoomSlide() {
+          currentIndex = (currentIndex + 1) % currentImages.length;
+          zoomModalImage.src = currentImages[currentIndex];
+          zoomModalCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        }
+
+        function prevZoomSlide() {
+          currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+          zoomModalImage.src = currentImages[currentIndex];
+          zoomModalCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+        }
+
+        // Modal controls
+        zoomModalClose.addEventListener('click', closeZoomModal);
+        zoomModalNext.addEventListener('click', nextZoomSlide);
+        zoomModalPrev.addEventListener('click', prevZoomSlide);
+        zoomModal.addEventListener('click', (e) => {
+          if (e.target === zoomModal) closeZoomModal();
+        });
+
+        // Keyboard navigation
+        window.addEventListener('keydown', (e) => {
+          if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+          if (zoomModal.classList.contains('active')) {
+            if (e.key === 'ArrowRight') nextZoomSlide();
+            if (e.key === 'ArrowLeft') prevZoomSlide();
+            if (e.key === 'Escape') closeZoomModal();
+          }
+        });
+      })();
+    </script>
+   
+    <!-- Contact -->
+    <section id="contact" class="container" data-reveal>
+      <div class="section-title">
+        <h2>Contact</h2>
+        <div class="line"></div>
+      </div>
+      <div class="grid-3">
+        <div class="card">
+          <b>Email</b>
+          <div class="muted">devashishrajput6883@gmail.com</div>
+        </div>
+        <div class="card">
+          <b>LinkedIn</b>
+          <div class="muted">/in/devashish-rajput</div>
+        </div>
+        <div class="card">
+          <b>GitHub</b>
+          <div class="muted">@devashish-r</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="spotlight-overlay" aria-hidden="true"></div>
+  <footer>
+    <div class="container">
+      <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+        <div>© <span id="yr"></span> Devashish Rajput</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ===== Helper: in-view reveal =====
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('in-view');
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+
+    // ===== Active nav highlight =====
+    const sections = [...document.querySelectorAll('main section')];
+    const links = [...document.querySelectorAll('nav a')];
+    const secObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+        }
+      })
+    }, { threshold: .4 });
+    sections.forEach(s => secObserver.observe(s));
+
+    // ===== Counters =====
+    const counterEls = document.querySelectorAll('[data-counter]');
+    const counterIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target; const target = +el.dataset.counter; let val = 0;
+        const step = Math.max(1, Math.floor(target / 40));
+        const t = setInterval(() => {
+          val += step; if (val >= target) { val = target; clearInterval(t); }
+          el.textContent = val;
+        }, 30);
+        counterIO.unobserve(el);
+      })
+    }, { threshold: .6 });
+    counterEls.forEach(el => counterIO.observe(el));
+
+    // ===== Typewriter =====
+    (function typewriter() {
+      const el = document.getElementById('typewriter');
+      const full = el.textContent.trim();
+      el.textContent = '';
+      let i = 0;
+      const write = () => { el.textContent = full.slice(0, i++); if (i <= full.length) setTimeout(write, 14); }
+      setTimeout(write, 300);
+    })();
+
+    // ===== Slider =====
+    (function slider() {
+      const slidesEl = document.getElementById('slides');
+      const progressEl = document.getElementById('progress');
+      const dotsEl = document.getElementById('dots');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const pauseBtn = document.getElementById('pauseBtn');
+      const slides = [...document.querySelectorAll('.slide')];
+      let idx = 0, playing = true, timer = null, progressTimer = null;
+      const DURATION = 2500;
+
+      // Dots
+      slides.forEach((_, i) => {
+        const d = document.createElement('div'); d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => go(i));
+        dotsEl.appendChild(d);
+      });
+      const dots = [...dotsEl.children];
+
+      const update = () => {
+        slidesEl.style.transform = `translateX(${-idx * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+      }
+      const go = (i) => { idx = (i + slides.length) % slides.length; progress(0); update(); restart(); }
+      const next = () => go(idx + 1);
+      const prev = () => go(idx - 1);
+
+      const progress = (pct) => {
+        progressEl.style.width = `${pct * 100}%`;
+      }
+
+      const start = () => {
+        stop();
+        let elapsed = 0; const step = 50;
+        progress(0);
+        progressTimer = setInterval(() => { elapsed += step; progress(Math.min(1, elapsed / DURATION)); }, step);
+        timer = setTimeout(next, DURATION);
+        playing = true;
+        pauseBtn.textContent = '⏸';
+      }
+      const stop = () => {
+        clearTimeout(timer); clearInterval(progressTimer); playing = false; pauseBtn.textContent = '▶️';
+      }
+      const restart = () => { if (playing) start(); }
+
+      // Controls
+      nextBtn.addEventListener('click', next);
+      prevBtn.addEventListener('click', prev);
+      pauseBtn.addEventListener('click', () => playing ? stop() : start());
+
+      // Pause on hover/focus
+      const slider = document.querySelector('.slider');
+      slider.addEventListener('mouseenter', () => playing && stop());
+      slider.addEventListener('mouseleave', () => !playing && start());
+      slider.addEventListener('focusin', () => playing && stop());
+      slider.addEventListener('focusout', () => !playing && start());
+
+      // Keyboard
+      window.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        if (e.code === 'ArrowRight') { e.preventDefault(); next(); }
+        if (e.code === 'ArrowLeft') { e.preventDefault(); prev(); }
+        if (e.code === 'Space') { e.preventDefault(); playing ? stop() : start(); }
+      });
+
+      // Touch swipe
+      let sx = 0, dx = 0;
+      slider.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; dx = 0; }, { passive: true });
+      slider.addEventListener('touchmove', (e) => { dx = e.touches[0].clientX - sx; }, { passive: true });
+      slider.addEventListener('touchend', () => {
+        if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+      });
+
+      // Start
+      start();
+    })();
+
+    // ===== Spotlight (Presenter Mode) =====
+    const presenterBtn = document.getElementById('presenterBtn');
+    const overlay = document.querySelector('.spotlight-overlay');
+    let spotlight = false;
+    presenterBtn.addEventListener('click', () => toggleSpotlight());
+    window.addEventListener('keydown', (e) => { if (e.key.toLowerCase() === 's') toggleSpotlight(); });
+    window.addEventListener('mousemove', (e) => {
+      document.documentElement.style.setProperty('--x', e.clientX + 'px');
+      document.documentElement.style.setProperty('--y', e.clientY + 'px');
+    });
+    function toggleSpotlight() {
+      spotlight = !spotlight;
+      document.body.classList.toggle('spotlight-on', spotlight);
+    }
+
+    // Year / footer year
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
