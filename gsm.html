@@ -1,0 +1,2147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="page-title">Vivo X Fold6 — Full Specifications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+/* ============================================================
+   CSS VARIABLES — THEME SYSTEM
+   ============================================================ */
+:root {
+  --bg-primary: #070710;
+  --bg-secondary: #0d0d1a;
+  --bg-card: rgba(255,255,255,0.04);
+  --bg-card-hover: rgba(255,255,255,0.07);
+  --bg-glass: rgba(255,255,255,0.05);
+  --border-color: rgba(255,255,255,0.08);
+  --border-hover: rgba(255,255,255,0.18);
+  --text-primary: #f0f0ff;
+  --text-secondary: rgba(240,240,255,0.55);
+  --text-muted: rgba(240,240,255,0.35);
+
+  /* Accent — changes with phone color */
+  --accent: #7c3aed;
+  --accent-rgb: 124,58,237;
+  --accent-2: #06b6d4;
+  --accent-2-rgb: 6,182,212;
+  --glow-color: rgba(124,58,237,0.35);
+  --aurora-1: rgba(124,58,237,0.12);
+  --aurora-2: rgba(6,182,212,0.08);
+
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
+  --shadow-card: 0 8px 40px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.05) inset;
+  --shadow-glow: 0 0 60px var(--glow-color);
+  --transition: 300ms cubic-bezier(0.4,0,0.2,1);
+  --max-width: 1300px;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-primary: #f4f4fa;
+    --bg-secondary: #eaeaf5;
+    --bg-card: rgba(255,255,255,0.7);
+    --bg-card-hover: rgba(255,255,255,0.9);
+    --bg-glass: rgba(255,255,255,0.6);
+    --border-color: rgba(0,0,20,0.08);
+    --border-hover: rgba(0,0,20,0.2);
+    --text-primary: #0a0a1a;
+    --text-secondary: rgba(10,10,26,0.6);
+    --text-muted: rgba(10,10,26,0.4);
+    --bg-card: rgba(255,255,255,0.75);
+    --shadow-card: 0 8px 40px rgba(0,0,0,0.08), 0 1px 0 rgba(255,255,255,0.8) inset;
+    --aurora-1: rgba(124,58,237,0.06);
+    --aurora-2: rgba(6,182,212,0.04);
+  }
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================================
+   SCROLL PROGRESS BAR
+   ============================================================ */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* ============================================================
+   AURORA BACKGROUND
+   ============================================================ */
+.aurora-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.aurora-bg::before,
+.aurora-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  transition: background 1s ease, transform 1s ease;
+}
+.aurora-bg::before {
+  width: 60vw; height: 60vw;
+  top: -20%; left: -10%;
+  background: var(--aurora-1);
+  animation: auroraFloat1 20s ease-in-out infinite;
+}
+.aurora-bg::after {
+  width: 50vw; height: 50vw;
+  bottom: -20%; right: -10%;
+  background: var(--aurora-2);
+  animation: auroraFloat2 25s ease-in-out infinite;
+}
+
+@keyframes auroraFloat1 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(5vw,5vh) scale(1.1); }
+}
+@keyframes auroraFloat2 {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(-5vw,-5vh) scale(1.08); }
+}
+
+/* ============================================================
+   PAGE WRAPPER
+   ============================================================ */
+.page-wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   HEADER BRAND BAR
+   ============================================================ */
+.brand-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0 12px;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  background: var(--bg-primary);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 200;
+  transition: box-shadow var(--transition);
+}
+.brand-bar.scrolled {
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+  background: rgba(7,7,16,0.85);
+}
+@media (prefers-color-scheme: light) {
+  .brand-bar.scrolled { background: rgba(244,244,250,0.85); }
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.brand-name span { color: var(--accent); }
+
+.brand-actions {
+  display: flex;
+  gap: 10px;
+}
+.icon-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 14px;
+}
+.icon-btn:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-hover);
+  color: var(--accent);
+  transform: scale(1.08);
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero-section {
+  display: grid;
+  grid-template-columns: 320px 1fr 280px;
+  gap: 32px;
+  padding: 56px 0 48px;
+  align-items: center;
+  min-height: 520px;
+}
+
+/* --- Phone Image Column --- */
+.hero-phone-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.phone-image-wrapper {
+  position: relative;
+  width: 240px;
+  height: 380px;
+  cursor: zoom-in;
+}
+
+.phone-image-wrapper::before {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  left: 50%; transform: translateX(-50%);
+  width: 180px; height: 40px;
+  background: var(--glow-color);
+  filter: blur(30px);
+  border-radius: 50%;
+  z-index: 0;
+  transition: background 0.8s ease;
+}
+
+#hero-phone-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), filter 0.8s ease;
+  animation: phoneFloat 6s ease-in-out infinite;
+  filter: drop-shadow(0 20px 60px var(--glow-color));
+}
+
+.phone-image-wrapper:hover #hero-phone-img {
+  transform: scale(1.06) translateY(-6px);
+}
+
+@keyframes phoneFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* Reflection */
+.phone-reflection {
+  position: absolute;
+  bottom: -60px; left: 50%;
+  transform: translateX(-50%) scaleY(-1);
+  width: 100%; height: 60px;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.15;
+}
+
+/* Color Swatches */
+.color-selector {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.color-swatch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.swatch-circle {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: all var(--transition);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.color-swatch.active .swatch-circle,
+.color-swatch:hover .swatch-circle {
+  border-color: var(--text-primary);
+  transform: scale(1.15);
+}
+
+.swatch-label {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* --- Center Info Column --- */
+.hero-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.15), rgba(var(--accent-2-rgb),0.15));
+  border: 1px solid rgba(var(--accent-rgb),0.3);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent-2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  width: fit-content;
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+.hero-name .brand-part {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.hero-quick-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quick-spec-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  font-size: 14px;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+.quick-spec-item:hover {
+  border-color: rgba(var(--accent-rgb),0.3);
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+}
+.quick-spec-item i {
+  width: 18px;
+  color: var(--accent);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.quick-spec-item strong {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-right: 4px;
+}
+
+.hero-cta-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0);
+  transition: background 0.2s;
+}
+.btn-primary:hover::after { background: rgba(255,255,255,0.08); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(var(--accent-rgb),0.4); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 100px;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid var(--border-color);
+  transition: all var(--transition);
+}
+.btn-secondary:hover {
+  background: var(--bg-card-hover);
+  border-color: rgba(var(--accent-rgb),0.4);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* --- Stats Column --- */
+.hero-stats-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-content: start;
+}
+
+.stat-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition);
+  cursor: default;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0) 0%, rgba(var(--accent-rgb),0.04) 100%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.stat-card:hover { 
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(var(--accent-rgb),0.3);
+  box-shadow: var(--shadow-card), 0 0 20px rgba(var(--accent-rgb),0.1);
+}
+.stat-card:hover::before { opacity: 1; }
+
+.stat-icon {
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* ============================================================
+   NAVIGATION TABS
+   ============================================================ */
+.nav-tabs-wrapper {
+  position: sticky;
+  top: 61px;
+  z-index: 100;
+  background: var(--bg-primary);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  margin: 0 -24px;
+  padding: 0 24px;
+}
+
+.nav-tabs {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  max-width: calc(var(--max-width) - 48px);
+}
+.nav-tabs::-webkit-scrollbar { display: none; }
+
+.nav-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transition);
+  font-family: var(--font-body);
+  position: relative;
+}
+.nav-tab:hover { color: var(--text-primary); }
+.nav-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ============================================================
+   SECTION TITLES
+   ============================================================ */
+.section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.section-badge {
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: rgba(var(--accent-rgb),0.12);
+  border: 1px solid rgba(var(--accent-rgb),0.25);
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.section-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+/* ============================================================
+   CONTENT SECTIONS
+   ============================================================ */
+.content-section {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.content-section:last-child { border-bottom: none; }
+
+/* ============================================================
+   SPEC SEARCH
+   ============================================================ */
+.spec-search-bar {
+  position: relative;
+  margin-bottom: 24px;
+  max-width: 400px;
+}
+.spec-search-bar input {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  border-radius: 100px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  outline: none;
+  transition: all var(--transition);
+}
+.spec-search-bar input:focus {
+  border-color: rgba(var(--accent-rgb),0.5);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb),0.1);
+}
+.spec-search-bar i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.spec-search-bar input::placeholder { color: var(--text-muted); }
+
+/* ============================================================
+   SPEC TABLE
+   ============================================================ */
+.spec-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  font-size: 14.5px;
+}
+
+.spec-category-row td {
+  padding: 14px 20px 10px;
+  background: rgba(var(--accent-rgb),0.06);
+  border-top: 1px solid var(--border-color);
+}
+
+.spec-category-label {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spec-row {
+  transition: background var(--transition);
+}
+.spec-row:hover td { background: rgba(var(--accent-rgb),0.04); }
+.spec-row:nth-child(even) td { background: rgba(255,255,255,0.02); }
+.spec-row:nth-child(even):hover td { background: rgba(var(--accent-rgb),0.04); }
+
+.spec-row td {
+  padding: 14px 20px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  vertical-align: top;
+  transition: background var(--transition);
+}
+
+.spec-name {
+  color: var(--text-secondary);
+  font-weight: 500;
+  width: 160px;
+  font-size: 13.5px;
+}
+
+.spec-value {
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.spec-copy-btn {
+  float: right;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.spec-row:hover .spec-copy-btn { opacity: 1; }
+.spec-copy-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--accent);
+}
+
+/* Category color left borders */
+.spec-category-row[data-cat="network"] .spec-category-label { color: #60a5fa; }
+.spec-category-row[data-cat="launch"] .spec-category-label { color: #34d399; }
+.spec-category-row[data-cat="body"] .spec-category-label { color: #f59e0b; }
+.spec-category-row[data-cat="display"] .spec-category-label { color: #a78bfa; }
+.spec-category-row[data-cat="platform"] .spec-category-label { color: #f87171; }
+.spec-category-row[data-cat="memory"] .spec-category-label { color: #06b6d4; }
+.spec-category-row[data-cat="camera"] .spec-category-label { color: #fb923c; }
+.spec-category-row[data-cat="selfie"] .spec-category-label { color: #e879f9; }
+.spec-category-row[data-cat="sound"] .spec-category-label { color: #4ade80; }
+.spec-category-row[data-cat="comms"] .spec-category-label { color: #38bdf8; }
+.spec-category-row[data-cat="features"] .spec-category-label { color: #fbbf24; }
+.spec-category-row[data-cat="battery"] .spec-category-label { color: #86efac; }
+.spec-category-row[data-cat="misc"] .spec-category-label { color: #c4b5fd; }
+
+/* ============================================================
+   PERFORMANCE CARDS
+   ============================================================ */
+.perf-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.perf-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.perf-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.perf-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(var(--accent-rgb),0.3);
+  box-shadow: var(--shadow-card);
+}
+.perf-card:hover::after { opacity: 1; }
+
+.perf-icon {
+  width: 42px; height: 42px;
+  border-radius: 12px;
+  background: rgba(var(--accent-rgb),0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+  font-size: 17px;
+  color: var(--accent);
+  transition: background var(--transition);
+}
+.perf-card:hover .perf-icon { background: rgba(var(--accent-rgb),0.2); }
+
+.perf-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.perf-value {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.perf-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   CAMERA SECTION
+   ============================================================ */
+.camera-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.camera-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.camera-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(var(--accent-rgb),0.25);
+  box-shadow: var(--shadow-card);
+}
+
+.camera-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: rgba(var(--accent-rgb),0.1);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+
+.camera-mp {
+  font-family: var(--font-display);
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.camera-mp span { font-size: 1rem; color: var(--text-muted); font-weight: 500; }
+
+.camera-specs-list {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.camera-spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.camera-spec-row:last-child { border-bottom: none; }
+.camera-spec-row .label { color: var(--text-muted); }
+.camera-spec-row .value { color: var(--text-primary); font-weight: 500; }
+
+/* ============================================================
+   BATTERY SECTION
+   ============================================================ */
+.battery-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.battery-visual {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.battery-illustration {
+  position: relative;
+  width: 160px;
+  height: 80px;
+}
+
+.battery-body {
+  width: 145px; height: 80px;
+  border: 3px solid var(--accent);
+  border-radius: 12px;
+  padding: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.battery-fill {
+  height: 100%;
+  width: 87%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  box-shadow: 0 0 20px rgba(var(--accent-rgb),0.4);
+  position: relative;
+  animation: batteryPulse 3s ease-in-out infinite;
+}
+@keyframes batteryPulse {
+  0%,100% { box-shadow: 0 0 20px rgba(var(--accent-rgb),0.4); }
+  50% { box-shadow: 0 0 40px rgba(var(--accent-rgb),0.7); }
+}
+
+.battery-tip {
+  position: absolute;
+  right: -10px;
+  top: 50%; transform: translateY(-50%);
+  width: 8px; height: 28px;
+  background: var(--accent);
+  border-radius: 0 4px 4px 0;
+}
+
+.battery-pct {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.battery-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.battery-info-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  transition: all var(--transition);
+}
+.battery-info-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(var(--accent-rgb),0.3);
+}
+.battery-info-icon {
+  font-size: 20px;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.battery-info-value {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.battery-info-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 600;
+}
+
+/* ============================================================
+   PROS & CONS
+   ============================================================ */
+.pros-cons-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.pros-card, .cons-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: all var(--transition);
+}
+.pros-card {
+  border-left: 3px solid #10b981;
+}
+.cons-card {
+  border-left: 3px solid #f87171;
+}
+.pros-card:hover { border-color: #10b981; box-shadow: 0 8px 40px rgba(16,185,129,0.1); transform: translateY(-3px); }
+.cons-card:hover { border-color: #f87171; box-shadow: 0 8px 40px rgba(248,113,113,0.1); transform: translateY(-3px); }
+
+.pros-cons-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pros-card .pros-cons-title { color: #10b981; }
+.cons-card .pros-cons-title { color: #f87171; }
+
+.pros-cons-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pros-cons-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+.pros-cons-list li i { margin-top: 1px; flex-shrink: 0; }
+.pros-card .pros-cons-list li i { color: #10b981; }
+.cons-card .pros-cons-list li i { color: #f87171; }
+
+/* ============================================================
+   RATINGS
+   ============================================================ */
+.ratings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 20px;
+}
+
+.rating-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px 16px;
+  text-align: center;
+  transition: all var(--transition);
+}
+.rating-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(var(--accent-rgb),0.3);
+  box-shadow: var(--shadow-card);
+}
+
+.rating-circle {
+  width: 80px; height: 80px;
+  margin: 0 auto 14px;
+  position: relative;
+}
+.rating-circle svg {
+  transform: rotate(-90deg);
+  width: 80px; height: 80px;
+}
+.rating-circle .bg-ring {
+  fill: none;
+  stroke: rgba(255,255,255,0.06);
+  stroke-width: 6;
+}
+.rating-circle .progress-ring {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+.rating-number {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.rating-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================================
+   PRICE CARDS
+   ============================================================ */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.price-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  transition: all var(--transition);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.price-card.featured {
+  border-color: rgba(var(--accent-rgb),0.4);
+  background: linear-gradient(135deg, rgba(var(--accent-rgb),0.08), rgba(var(--accent-2-rgb),0.05));
+}
+.price-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card), 0 0 40px rgba(var(--accent-rgb),0.15);
+  border-color: rgba(var(--accent-rgb),0.4);
+}
+
+.price-region-flag {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+.price-region-name {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+.price-amount {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.price-note {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+/* ============================================================
+   FLOATING ACTION BUTTONS
+   ============================================================ */
+.fab-cluster {
+  position: fixed;
+  bottom: 32px;
+  right: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 300;
+}
+
+.fab {
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-size: 16px;
+  box-shadow: var(--shadow-card);
+}
+.fab:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(var(--accent-rgb),0.5);
+}
+.fab.fab-top {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  border-color: transparent;
+  color: #fff;
+}
+
+/* ============================================================
+   GALLERY SLIDER
+   ============================================================ */
+.gallery-wrapper {
+  position: relative;
+}
+.gallery-main {
+  width: 100%;
+  height: 360px;
+  object-fit: contain;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  display: block;
+  filter: drop-shadow(0 10px 40px rgba(0,0,0,0.3));
+}
+.gallery-thumbs {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+.gallery-thumb {
+  width: 80px; height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 2px solid var(--border-color);
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+  background: var(--bg-card);
+}
+.gallery-thumb.active, .gallery-thumb:hover {
+  border-color: var(--accent);
+  transform: scale(1.05);
+}
+.gallery-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* ============================================================
+   TOAST NOTIFICATION
+   ============================================================ */
+#toast {
+  position: fixed;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 1000;
+}
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================================
+   PRINT MODE
+   ============================================================ */
+@media print {
+  .aurora-bg, .nav-tabs-wrapper, .fab-cluster, #progress-bar, .brand-bar,
+  .hero-cta-row, #toast, .spec-copy-btn { display: none !important; }
+  body { background: #fff; color: #000; }
+  .spec-table { border: 1px solid #ccc; }
+  .spec-row td { border-top: 1px solid #eee; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up:nth-child(2) { transition-delay: 0.1s; }
+.fade-up:nth-child(3) { transition-delay: 0.2s; }
+.fade-up:nth-child(4) { transition-delay: 0.3s; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  .hero-section {
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: auto auto;
+  }
+  .hero-stats-col {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .battery-section-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    padding: 32px 0;
+    gap: 24px;
+  }
+  .hero-stats-col {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pros-cons-grid { grid-template-columns: 1fr; }
+  .page-wrapper { padding: 0 16px; }
+  .nav-tabs-wrapper { margin: 0 -16px; padding: 0 16px; }
+  .hero-name { font-size: 2rem; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .spec-name { width: 110px; }
+}
+
+@media (max-width: 480px) {
+  .hero-stats-col { grid-template-columns: 1fr 1fr; }
+  .perf-grid { grid-template-columns: 1fr 1fr; }
+  .price-grid { grid-template-columns: 1fr; }
+  .ratings-grid { grid-template-columns: repeat(3, 1fr); }
+  .camera-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Scroll progress -->
+<div id="progress-bar"></div>
+
+<!-- Aurora background -->
+<div class="aurora-bg" id="aurora-bg"></div>
+
+<!-- Toast notification -->
+<div id="toast"></div>
+
+<!-- Floating action buttons -->
+<div class="fab-cluster">
+  <button class="fab" onclick="window.print()" title="Print"><i class="fa-solid fa-print"></i></button>
+  <button class="fab" onclick="sharePhone()" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
+  <button class="fab" onclick="bookmarkPhone()" title="Bookmark"><i class="fa-regular fa-bookmark" id="bookmark-icon"></i></button>
+  <button class="fab fab-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+</div>
+
+<!-- MAIN PAGE WRAPPER -->
+<div class="page-wrapper">
+
+  <!-- BRAND BAR -->
+  <header class="brand-bar" id="brand-bar">
+    <div class="brand-name" id="brand-bar-name">vivo <span>X Fold6</span></div>
+    <div class="brand-actions">
+      <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme"><i class="fa-regular fa-moon" id="theme-icon"></i></button>
+      <button class="icon-btn" onclick="sharePhone()" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="overview">
+    
+    <!-- Phone image -->
+    <div class="hero-phone-col">
+      <div class="phone-image-wrapper">
+        <img id="hero-phone-img" src="" alt="Phone render" loading="lazy">
+      </div>
+      <div class="color-selector" id="color-selector"></div>
+    </div>
+
+    <!-- Info -->
+    <div class="hero-info-col">
+      <div class="hero-badge"><i class="fa-solid fa-bolt"></i> <span id="hero-badge-text">New Launch 2026</span></div>
+      <h1 class="hero-name" id="hero-name"></h1>
+      <div class="hero-quick-specs" id="hero-quick-specs"></div>
+      <div class="hero-cta-row">
+        <button class="btn-primary" onclick="document.getElementById('specifications').scrollIntoView({behavior:'smooth'})">
+          <i class="fa-solid fa-list"></i> Full Specifications
+        </button>
+        <button class="btn-secondary" onclick="document.getElementById('price').scrollIntoView({behavior:'smooth'})">
+          <i class="fa-solid fa-tag"></i> Check Price
+        </button>
+      </div>
+    </div>
+
+    <!-- Stat cards -->
+    <div class="hero-stats-col" id="hero-stats"></div>
+
+  </section>
+
+  <!-- NAV TABS -->
+  <div class="nav-tabs-wrapper" id="nav-tabs-wrapper">
+    <div class="nav-tabs" id="nav-tabs">
+      <button class="nav-tab active" data-target="specifications"><i class="fa-solid fa-microchip"></i> Specifications</button>
+      <button class="nav-tab" data-target="performance"><i class="fa-solid fa-gauge-high"></i> Performance</button>
+      <button class="nav-tab" data-target="camera"><i class="fa-solid fa-camera"></i> Camera</button>
+      <button class="nav-tab" data-target="battery"><i class="fa-solid fa-battery-full"></i> Battery</button>
+      <button class="nav-tab" data-target="verdict"><i class="fa-solid fa-star"></i> Verdict</button>
+      <button class="nav-tab" data-target="price"><i class="fa-solid fa-tag"></i> Price</button>
+    </div>
+  </div>
+
+  <!-- ======================== SPECIFICATIONS ======================== -->
+  <section class="content-section" id="specifications">
+    <div class="section-title-row fade-up">
+      <h2 class="section-title">Specifications</h2>
+      <span class="section-badge">Full Details</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="spec-search-bar fade-up">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="spec-search" placeholder="Search specifications..." oninput="searchSpecs(this.value)">
+    </div>
+    <div class="fade-up">
+      <table class="spec-table" id="spec-table"></table>
+    </div>
+  </section>
+
+  <!-- ======================== PERFORMANCE ======================== -->
+  <section class="content-section" id="performance">
+    <div class="section-title-row fade-up">
+      <h2 class="section-title">Performance</h2>
+      <span class="section-badge">Benchmarks</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="perf-grid" id="perf-grid"></div>
+  </section>
+
+  <!-- ======================== CAMERA ======================== -->
+  <section class="content-section" id="camera">
+    <div class="section-title-row fade-up">
+      <h2 class="section-title">Camera System</h2>
+      <span class="section-badge">Imaging</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="camera-grid" id="camera-grid"></div>
+  </section>
+
+  <!-- ======================== BATTERY ======================== -->
+  <section class="content-section" id="battery">
+    <div class="section-title-row fade-up">
+      <h2 class="section-title">Battery</h2>
+      <span class="section-badge">Power</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="battery-section-grid">
+      <div class="battery-visual fade-up">
+        <div class="battery-illustration">
+          <div class="battery-body">
+            <div class="battery-fill" id="battery-fill"></div>
+          </div>
+          <div class="battery-tip"></div>
+        </div>
+        <div class="battery-pct" id="battery-pct">7000 mAh</div>
+        <p style="color:var(--text-muted);font-size:13px;text-align:center" id="battery-desc">Si/C Li-Ion — Industry-leading capacity</p>
+      </div>
+      <div class="battery-info-grid fade-up" id="battery-info-grid"></div>
+    </div>
+  </section>
+
+  <!-- ======================== VERDICT ======================== -->
+  <section class="content-section" id="verdict">
+    <div class="section-title-row fade-up">
+      <h2 class="section-title">Pros &amp; Cons</h2>
+      <span class="section-badge">Verdict</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="pros-cons-grid fade-up" id="pros-cons-grid"></div>
+    <br><br>
+    <div class="section-title-row fade-up">
+      <h2 class="section-title">Ratings</h2>
+      <span class="section-badge">Score</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="ratings-grid" id="ratings-grid"></div>
+  </section>
+
+  <!-- ======================== PRICE ======================== -->
+  <section class="content-section" id="price">
+    <div class="section-title-row fade-up">
+      <h2 class="section-title">Price</h2>
+      <span class="section-badge">Expected</span>
+      <div class="section-line"></div>
+    </div>
+    <div class="price-grid fade-up" id="price-grid"></div>
+  </section>
+
+</div><!-- end page-wrapper -->
+
+<script>
+/* ============================================================
+   PHONE DATA OBJECT
+   Edit this object to populate the entire page.
+   ============================================================ */
+const phoneData = {
+  name: "X Fold6",
+  brand: "vivo",
+  status: "Coming Soon · Expected July 2026",
+  
+  colors: [
+    { name: "Azure", hex: "#4a9cb8", image: "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-x-fold6-1.jpg" },
+    { name: "Gray",  hex: "#6b7280", image: "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-x-fold6-1.jpg" },
+    { name: "White", hex: "#e5e7eb", image: "https://fdn2.gsmarena.com/vv/pics/vivo/vivo-x-fold6-1.jpg" },
+  ],
+
+  quickSpecs: [
+    { icon: "fa-solid fa-calendar", label: "Released", value: "July 2026 (Expected)" },
+    { icon: "fa-brands fa-android", label: "OS", value: "Android 16, OriginOS 6 Fold" },
+    { icon: "fa-solid fa-microchip", label: "Chipset", value: "Dimensity 9500 Super (3nm)" },
+    { icon: "fa-solid fa-hard-drive", label: "Storage", value: "256GB / 512GB / 1TB" },
+    { icon: "fa-solid fa-weight-hanging", label: "Weight", value: "228g (folded)" },
+  ],
+
+  heroStats: [
+    { icon: "fa-regular fa-square", label: "Display", value: "8.02\"" },
+    { icon: "fa-solid fa-camera", label: "Camera", value: "200 MP" },
+    { icon: "fa-solid fa-battery-full", label: "Battery", value: "7000 mAh" },
+    { icon: "fa-solid fa-memory", label: "RAM", value: "16 GB" },
+    { icon: "fa-solid fa-bolt", label: "Charging", value: "80W" },
+  ],
+
+  specs: {
+    network: {
+      label: "Network",
+      icon: "fa-solid fa-signal",
+      rows: [
+        { name: "Technology", value: "GSM / HSPA / LTE / 5G" },
+      ]
+    },
+    launch: {
+      label: "Launch",
+      icon: "fa-solid fa-rocket",
+      rows: [
+        { name: "Announced", value: "2026, June 26" },
+        { name: "Status", value: "Coming soon. Exp. release July 01, 2026" },
+      ]
+    },
+    body: {
+      label: "Body",
+      icon: "fa-solid fa-mobile-screen",
+      rows: [
+        { name: "Dimensions (unfolded)", value: "157.2 × 145.7 × 4.4 mm (or 4.8 mm)" },
+        { name: "Dimensions (folded)", value: "157.2 × 74.3 × 9.4 mm (or 9.9 mm)" },
+        { name: "Weight", value: "228 g or 235 g (8.04 oz)" },
+        { name: "Build", value: "Glass front (closed), aluminum frame, glass-fiber reinforced plastic back" },
+        { name: "SIM", value: "Nano-SIM + Nano-SIM" },
+        { name: "IP Rating", value: "IP58/IP59 dust & water resistant (1m for 30 min)" },
+      ]
+    },
+    display: {
+      label: "Display",
+      icon: "fa-solid fa-display",
+      rows: [
+        { name: "Type", value: "Foldable LTPO AMOLED, 1B colors, 120Hz, HDR10+, HDR Vivid, Dolby Vision" },
+        { name: "Size", value: "8.02 inches, 206.8 cm² (~90.3% screen-to-body ratio)" },
+        { name: "Resolution", value: "2312 × 2504 pixels (~425 ppi density)" },
+        { name: "Cover display", value: "LTPO AMOLED, 120Hz, HDR10+, Dolby Vision, 5000 nits (peak)\n6.51 inches, 1120 × 2528 pixels, 20:9 ratio" },
+      ]
+    },
+    platform: {
+      label: "Platform",
+      icon: "fa-solid fa-cpu",
+      rows: [
+        { name: "OS", value: "Android 16, OriginOS 6 Fold" },
+        { name: "Chipset", value: "Mediatek Dimensity 9500 Super (3 nm)" },
+        { name: "CPU", value: "Octa-core (1×4.21 GHz C1-Ultra & 3×3.5 GHz C1-Premium & 4×2.7 GHz C1-Pro)" },
+        { name: "GPU", value: "Mali-G1 Ultra MC12" },
+      ]
+    },
+    memory: {
+      label: "Memory",
+      icon: "fa-solid fa-memory",
+      rows: [
+        { name: "Card slot", value: "No" },
+        { name: "Internal", value: "256GB 12GB RAM, 512GB 12GB RAM, 512GB 16GB RAM, 1TB 16GB RAM — UFS 4.1" },
+      ]
+    },
+    camera: {
+      label: "Main Camera",
+      icon: "fa-solid fa-camera",
+      rows: [
+        { name: "Triple", value: "200 MP, f/1.7 (wide), 1/1.4\", PDAF, OIS" },
+        { name: "Telephoto", value: "50 MP, f/2.6, 70mm (periscope), 1/1.95\", 0.8μm, PDAF, OIS, 3× optical zoom" },
+        { name: "Ultrawide", value: "50 MP, f/2.1, 16mm, 119°, 1/2.76\", 0.64μm, PDAF" },
+        { name: "Features", value: "Color spectrum sensor, Laser AF, Zeiss optics, Zeiss T* lens coating, Dual-LED flash, panorama" },
+        { name: "Video", value: "8K@30fps, 4K@30/60fps, 1080p@30/60fps, gyro-EIS" },
+      ]
+    },
+    selfie: {
+      label: "Selfie Camera",
+      icon: "fa-solid fa-user",
+      rows: [
+        { name: "Single", value: "20 MP, f/2.4, 21mm (wide), 1/3.6\", 0.7μm" },
+        { name: "Cover camera", value: "20 MP, f/2.4, 21mm (wide), 1/3.6\", 0.7μm" },
+        { name: "Features", value: "HDR" },
+        { name: "Video", value: "1080p@30fps" },
+      ]
+    },
+    sound: {
+      label: "Sound",
+      icon: "fa-solid fa-music",
+      rows: [
+        { name: "Loudspeaker", value: "Yes, with stereo speakers" },
+        { name: "3.5mm jack", value: "No" },
+        { name: "Hi-Res Audio", value: "24-bit/192kHz Hi-Res audio" },
+      ]
+    },
+    comms: {
+      label: "Connectivity",
+      icon: "fa-solid fa-wifi",
+      rows: [
+        { name: "WLAN", value: "Wi-Fi 802.11 a/b/g/n/ac/6e/7, dual-band or tri-band, Wi-Fi Direct" },
+        { name: "Bluetooth", value: "5.4, A2DP, LE, aptX HD, LHDC 5" },
+        { name: "Positioning", value: "GPS (L1+L5), BDS, GALILEO, QZSS, NavIC, GLONASS" },
+        { name: "NFC", value: "Yes" },
+        { name: "Infrared port", value: "Yes" },
+        { name: "Radio", value: "No" },
+        { name: "USB", value: "USB Type-C 3.2 Gen2, OTG, Display Port" },
+      ]
+    },
+    features: {
+      label: "Features",
+      icon: "fa-solid fa-star",
+      rows: [
+        { name: "Sensors", value: "Fingerprint (side-mounted), accelerometer, gyro, proximity, compass, barometer" },
+      ]
+    },
+    battery: {
+      label: "Battery",
+      icon: "fa-solid fa-battery-full",
+      rows: [
+        { name: "Type", value: "Si/C Li-Ion 7000 mAh" },
+        { name: "Wired charging", value: "80W" },
+        { name: "Wireless charging", value: "40W" },
+        { name: "Reverse wired", value: "Yes" },
+        { name: "Reverse wireless", value: "5W" },
+      ]
+    },
+    misc: {
+      label: "Misc",
+      icon: "fa-solid fa-ellipsis",
+      rows: [
+        { name: "Colors", value: "Gray, White, Azure" },
+        { name: "Models", value: "V2545A" },
+        { name: "Price (EUR)", value: "~1030 EUR" },
+      ]
+    },
+  },
+
+  performance: [
+    { icon: "fa-solid fa-microchip", label: "Chipset", value: "Dimensity 9500 Super", sub: "3nm process" },
+    { icon: "fa-solid fa-bolt", label: "CPU Cores", value: "Octa-core", sub: "1×4.21 GHz peak" },
+    { icon: "fa-solid fa-gamepad", label: "GPU", value: "Mali-G1 Ultra", sub: "MC12 configuration" },
+    { icon: "fa-solid fa-memory", label: "RAM", value: "12 / 16 GB", sub: "LPDDR5X" },
+    { icon: "fa-solid fa-hard-drive", label: "Storage", value: "256GB – 1TB", sub: "UFS 4.1" },
+    { icon: "fa-solid fa-gauge-high", label: "AnTuTu", value: "~2,200,000+", sub: "Estimated score" },
+    { icon: "fa-solid fa-server", label: "Geekbench (Multi)", value: "~7,400+", sub: "Estimated score" },
+    { icon: "fa-solid fa-brain", label: "AI Score", value: "Top Tier", sub: "On-device AI" },
+  ],
+
+  cameras: [
+    {
+      type: "Main",
+      mp: "200",
+      specs: [
+        { label: "Aperture", value: "f/1.7" },
+        { label: "Sensor", value: "1/1.4\"" },
+        { label: "Focus", value: "PDAF + Laser AF" },
+        { label: "OIS", value: "Yes" },
+        { label: "Focal Length", value: "24mm equiv." },
+      ]
+    },
+    {
+      type: "Telephoto",
+      mp: "50",
+      specs: [
+        { label: "Aperture", value: "f/2.6" },
+        { label: "Sensor", value: "1/1.95\"" },
+        { label: "Zoom", value: "3× optical" },
+        { label: "OIS", value: "Yes" },
+        { label: "Focal Length", value: "70mm equiv." },
+      ]
+    },
+    {
+      type: "Ultrawide",
+      mp: "50",
+      specs: [
+        { label: "Aperture", value: "f/2.1" },
+        { label: "Sensor", value: "1/2.76\"" },
+        { label: "FOV", value: "119°" },
+        { label: "Focus", value: "PDAF" },
+        { label: "Focal Length", value: "16mm equiv." },
+      ]
+    },
+    {
+      type: "Selfie",
+      mp: "20",
+      specs: [
+        { label: "Aperture", value: "f/2.4" },
+        { label: "Sensor", value: "1/3.6\"" },
+        { label: "Focal Length", value: "21mm equiv." },
+        { label: "Video", value: "1080p@30fps" },
+        { label: "HDR", value: "Yes" },
+      ]
+    },
+  ],
+
+  battery: {
+    capacity: "7000 mAh",
+    type: "Si/C Li-Ion",
+    wired: "80W",
+    wireless: "40W",
+    reverseWired: "Yes",
+    reverseWireless: "5W",
+    fillPercent: 87,
+    info: [
+      { icon: "fa-solid fa-bolt", value: "80W", label: "Wired Charge" },
+      { icon: "fa-solid fa-broadcast-tower", value: "40W", label: "Wireless" },
+      { icon: "fa-solid fa-arrow-right-arrow-left", value: "5W", label: "Reverse" },
+      { icon: "fa-solid fa-shield-halved", value: "Si/C", label: "Cell Tech" },
+    ]
+  },
+
+  pros: [
+    "Massive 7000 mAh battery in a foldable form factor",
+    "200 MP main camera with Zeiss optics and T* coating",
+    "Dimensity 9500 Super — cutting-edge 3nm performance",
+    "IP58/IP59 water and dust resistance",
+    "8K video recording capability",
+    "Tri-band Wi-Fi 7 and Bluetooth 5.4 with LHDC 5",
+  ],
+
+  cons: [
+    "No 3.5mm headphone jack",
+    "No radio",
+    "Heavy at 228–235g",
+    "Premium price (~1030 EUR)",
+    "No microSD card slot",
+  ],
+
+  ratings: [
+    { label: "Display", score: 95 },
+    { label: "Camera", score: 92 },
+    { label: "Performance", score: 97 },
+    { label: "Battery", score: 94 },
+    { label: "Design", score: 89 },
+    { label: "Value", score: 80 },
+  ],
+
+  price: [
+    { region: "Europe", flag: "🇪🇺", currency: "EUR", amount: "~1,030", note: "Expected pricing", featured: true },
+    { region: "India", flag: "🇮🇳", currency: "INR", amount: "~₹95,000", note: "Expected pricing" },
+    { region: "USA", flag: "🇺🇸", currency: "USD", amount: "~$1,100", note: "Expected pricing" },
+  ],
+};
+
+/* ============================================================
+   ACCENT COLOR MAPPING
+   ============================================================ */
+const accentPresets = [
+  { r: 124, g: 58,  b: 237 }, // violet
+  { r: 6,   g: 182, b: 212 }, // cyan
+  { r: 59,  g: 130, b: 246 }, // blue
+  { r: 234, g: 179, b: 8   }, // amber
+  { r: 34,  g: 197, b: 94  }, // green
+];
+
+/* ============================================================
+   INITIALIZATION
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', () => {
+  renderAll();
+  initScrollBehaviors();
+  initIntersectionObserver();
+  initNavTabs();
+});
+
+function renderAll() {
+  // Page title
+  document.getElementById('page-title').textContent = `${phoneData.brand} ${phoneData.name} — Full Specifications`;
+  document.getElementById('brand-bar-name').innerHTML = `${phoneData.brand} <span>${phoneData.name}</span>`;
+
+  renderColors();
+  renderHeroName();
+  renderQuickSpecs();
+  renderHeroStats();
+  renderSpecTable();
+  renderPerformance();
+  renderCameras();
+  renderBattery();
+  renderProscons();
+  renderRatings();
+  renderPrice();
+
+  // Set first color active
+  if(phoneData.colors.length > 0) selectColor(0);
+}
+
+/* --- Hero Name --- */
+function renderHeroName() {
+  const el = document.getElementById('hero-name');
+  el.innerHTML = `<span class="brand-part">${phoneData.brand} </span>${phoneData.name}`;
+}
+
+/* --- Quick Specs --- */
+function renderQuickSpecs() {
+  const el = document.getElementById('hero-quick-specs');
+  el.innerHTML = phoneData.quickSpecs.map(s => `
+    <div class="quick-spec-item">
+      <i class="${s.icon}"></i>
+      <span><strong>${s.label}:</strong> ${s.value}</span>
+    </div>
+  `).join('');
+}
+
+/* --- Hero Stats --- */
+function renderHeroStats() {
+  const el = document.getElementById('hero-stats');
+  el.innerHTML = phoneData.heroStats.map(s => `
+    <div class="stat-card fade-up">
+      <i class="${s.icon} stat-icon"></i>
+      <div class="stat-value">${s.value}</div>
+      <div class="stat-label">${s.label}</div>
+    </div>
+  `).join('');
+}
+
+/* --- Color Selector --- */
+function renderColors() {
+  const el = document.getElementById('color-selector');
+  el.innerHTML = phoneData.colors.map((c, i) => `
+    <div class="color-swatch ${i===0?'active':''}" onclick="selectColor(${i})" data-index="${i}" title="${c.name}">
+      <div class="swatch-circle" style="background:${c.hex}"></div>
+      <span class="swatch-label">${c.name}</span>
+    </div>
+  `).join('');
+}
+
+/* --- Select Color --- */
+function selectColor(index) {
+  const color = phoneData.colors[index];
+  if (!color) return;
+
+  // Update active swatch
+  document.querySelectorAll('.color-swatch').forEach((s,i) => {
+    s.classList.toggle('active', i === index);
+  });
+
+  // Update phone image
+  const img = document.getElementById('hero-phone-img');
+  img.style.opacity = '0';
+  img.style.transform = 'scale(0.95)';
+  setTimeout(() => {
+    img.src = color.image;
+    img.onload = () => {
+      img.style.opacity = '1';
+      img.style.transform = '';
+    };
+    img.onerror = () => {
+      img.style.opacity = '0.3';
+    };
+  }, 150);
+
+  // Derive accent from color hex
+  const hex = color.hex.replace('#','');
+  const r = parseInt(hex.substring(0,2),16);
+  const g = parseInt(hex.substring(2,4),16);
+  const b = parseInt(hex.substring(4,6),16);
+
+  // Blend with a preset for visual richness
+  const preset = accentPresets[index % accentPresets.length];
+  const ar = Math.round((r*0.4 + preset.r*0.6));
+  const ag = Math.round((g*0.4 + preset.g*0.6));
+  const ab = Math.round((b*0.4 + preset.b*0.6));
+
+  document.documentElement.style.setProperty('--accent', `rgb(${ar},${ag},${ab})`);
+  document.documentElement.style.setProperty('--accent-rgb', `${ar},${ag},${ab}`);
+  document.documentElement.style.setProperty('--glow-color', `rgba(${ar},${ag},${ab},0.35)`);
+  document.documentElement.style.setProperty('--aurora-1', `rgba(${ar},${ag},${ab},0.12)`);
+
+  // Ring animation color refresh
+  document.querySelectorAll('.progress-ring').forEach(ring => {
+    ring.style.stroke = `rgb(${ar},${ag},${ab})`;
+  });
+}
+
+/* --- Spec Table --- */
+function renderSpecTable() {
+  const table = document.getElementById('spec-table');
+  let html = '';
+  for (const [catKey, cat] of Object.entries(phoneData.specs)) {
+    html += `
+      <tr class="spec-category-row" data-cat="${catKey}">
+        <td colspan="3">
+          <div class="spec-category-label">
+            <i class="${cat.icon}"></i> ${cat.label}
+          </div>
+        </td>
+      </tr>
+    `;
+    cat.rows.forEach(row => {
+      html += `
+        <tr class="spec-row" data-search="${catKey} ${row.name} ${row.value}">
+          <td class="spec-name">${row.name}</td>
+          <td class="spec-value">${row.value.replace(/\n/g,'<br>')}</td>
+          <td style="width:60px;text-align:right">
+            <button class="spec-copy-btn" onclick="copySpec('${escStr(row.name)}','${escStr(row.value)}')" title="Copy">
+              <i class="fa-regular fa-copy"></i>
+            </button>
+          </td>
+        </tr>
+      `;
+    });
+  }
+  table.innerHTML = html;
+}
+
+function escStr(s) { return s.replace(/'/g,'&#39;').replace(/\n/g,' '); }
+
+function searchSpecs(query) {
+  const q = query.toLowerCase();
+  document.querySelectorAll('.spec-row').forEach(row => {
+    const txt = row.dataset.search.toLowerCase();
+    row.style.display = (!q || txt.includes(q)) ? '' : 'none';
+  });
+  document.querySelectorAll('.spec-category-row').forEach(catRow => {
+    const catKey = catRow.dataset.cat;
+    const anyVisible = [...document.querySelectorAll(`.spec-row[data-search^="${catKey}"]`)]
+      .some(r => r.style.display !== 'none');
+    catRow.style.display = (!q || anyVisible) ? '' : 'none';
+  });
+}
+
+function copySpec(name, value) {
+  navigator.clipboard.writeText(`${name}: ${value}`).then(() => showToast('Copied!'));
+}
+
+/* --- Performance --- */
+function renderPerformance() {
+  const el = document.getElementById('perf-grid');
+  el.innerHTML = phoneData.performance.map(p => `
+    <div class="perf-card fade-up">
+      <div class="perf-icon"><i class="${p.icon}"></i></div>
+      <div class="perf-label">${p.label}</div>
+      <div class="perf-value">${p.value}</div>
+      <div class="perf-sub">${p.sub}</div>
+    </div>
+  `).join('');
+}
+
+/* --- Cameras --- */
+function renderCameras() {
+  const el = document.getElementById('camera-grid');
+  el.innerHTML = phoneData.cameras.map(cam => `
+    <div class="camera-card fade-up">
+      <div class="camera-type-badge"><i class="fa-solid fa-camera"></i> ${cam.type}</div>
+      <div class="camera-mp">${cam.mp}<span> MP</span></div>
+      <div class="camera-specs-list">
+        ${cam.specs.map(s => `
+          <div class="camera-spec-row">
+            <span class="label">${s.label}</span>
+            <span class="value">${s.value}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+/* --- Battery --- */
+function renderBattery() {
+  const b = phoneData.battery;
+  document.getElementById('battery-pct').textContent = b.capacity;
+  document.getElementById('battery-desc').textContent = `${b.type} — Industry-leading foldable capacity`;
+  document.getElementById('battery-fill').style.width = b.fillPercent + '%';
+
+  const grid = document.getElementById('battery-info-grid');
+  grid.innerHTML = b.info.map(item => `
+    <div class="battery-info-card fade-up">
+      <div class="battery-info-icon"><i class="${item.icon}"></i></div>
+      <div class="battery-info-value">${item.value}</div>
+      <div class="battery-info-label">${item.label}</div>
+    </div>
+  `).join('');
+}
+
+/* --- Pros & Cons --- */
+function renderProscons() {
+  const el = document.getElementById('pros-cons-grid');
+  el.innerHTML = `
+    <div class="pros-card fade-up">
+      <div class="pros-cons-title"><i class="fa-solid fa-circle-check"></i> What We Love</div>
+      <ul class="pros-cons-list">
+        ${phoneData.pros.map(p => `<li><i class="fa-solid fa-check"></i><span>${p}</span></li>`).join('')}
+      </ul>
+    </div>
+    <div class="cons-card fade-up">
+      <div class="pros-cons-title"><i class="fa-solid fa-circle-xmark"></i> Room to Improve</div>
+      <ul class="pros-cons-list">
+        ${phoneData.cons.map(c => `<li><i class="fa-solid fa-xmark"></i><span>${c}</span></li>`).join('')}
+      </ul>
+    </div>
+  `;
+}
+
+/* --- Ratings --- */
+function renderRatings() {
+  const el = document.getElementById('ratings-grid');
+  const circumference = 220;
+  el.innerHTML = phoneData.ratings.map(r => {
+    const offset = circumference - (r.score / 100) * circumference;
+    return `
+      <div class="rating-card fade-up">
+        <div class="rating-circle">
+          <svg viewBox="0 0 80 80">
+            <circle class="bg-ring" cx="40" cy="40" r="35"/>
+            <circle class="progress-ring" cx="40" cy="40" r="35"
+              stroke-dasharray="${circumference}"
+              stroke-dashoffset="${circumference}"
+              data-target="${offset}"/>
+          </svg>
+          <div class="rating-number">${r.score}</div>
+        </div>
+        <div class="rating-label">${r.label}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* --- Price --- */
+function renderPrice() {
+  const el = document.getElementById('price-grid');
+  el.innerHTML = phoneData.price.map(p => `
+    <div class="price-card ${p.featured?'featured':''} fade-up">
+      <div class="price-region-flag">${p.flag}</div>
+      <div class="price-region-name">${p.region}</div>
+      <div class="price-amount">${p.amount}<span style="font-size:.9rem;margin-left:4px">${p.currency}</span></div>
+      <div class="price-note">${p.note}</div>
+    </div>
+  `).join('');
+}
+
+/* ============================================================
+   SCROLL BEHAVIORS
+   ============================================================ */
+function initScrollBehaviors() {
+  const bar = document.getElementById('progress-bar');
+  const brandBar = document.getElementById('brand-bar');
+
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = `${(scrolled/total)*100}%`;
+    brandBar.classList.toggle('scrolled', scrolled > 60);
+  }, { passive: true });
+}
+
+/* ============================================================
+   NAV TABS
+   ============================================================ */
+function initNavTabs() {
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = document.getElementById(tab.dataset.target);
+      if (target) {
+        const offset = 130;
+        const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: pos, behavior: 'smooth' });
+      }
+      document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Update active tab on scroll
+  const sections = ['specifications','performance','camera','battery','verdict','price'];
+  const tabMap = {
+    specifications: 0, performance: 1, camera: 2, battery: 3, verdict: 4, price: 5
+  };
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 180) current = id;
+    });
+    if (current && tabMap[current] !== undefined) {
+      document.querySelectorAll('.nav-tab').forEach((t,i) => {
+        t.classList.toggle('active', i === tabMap[current]);
+      });
+    }
+  }, { passive: true });
+}
+
+/* ============================================================
+   INTERSECTION OBSERVER
+   ============================================================ */
+function initIntersectionObserver() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+
+        // Animate rating rings
+        const ring = entry.target.querySelector('.progress-ring');
+        if (ring && ring.dataset.target !== undefined) {
+          requestAnimationFrame(() => {
+            ring.style.strokeDashoffset = ring.dataset.target;
+          });
+        }
+
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(t._timer);
+  t._timer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function sharePhone() {
+  if (navigator.share) {
+    navigator.share({
+      title: `${phoneData.brand} ${phoneData.name} Specifications`,
+      url: window.location.href,
+    });
+  } else {
+    navigator.clipboard.writeText(window.location.href).then(() => showToast('Link copied!'));
+  }
+}
+
+let bookmarked = false;
+function bookmarkPhone() {
+  bookmarked = !bookmarked;
+  const icon = document.getElementById('bookmark-icon');
+  icon.className = bookmarked ? 'fa-solid fa-bookmark' : 'fa-regular fa-bookmark';
+  showToast(bookmarked ? 'Bookmarked!' : 'Bookmark removed');
+}
+
+let darkMode = true;
+function toggleTheme() {
+  darkMode = !darkMode;
+  document.getElementById('theme-icon').className = darkMode ? 'fa-regular fa-moon' : 'fa-regular fa-sun';
+  // Note: actual theming handled by prefers-color-scheme; this is a manual override stub
+  showToast(darkMode ? 'Dark mode' : 'Light mode');
+}
+</script>
+</body>
+</html>
